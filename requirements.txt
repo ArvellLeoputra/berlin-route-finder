@@ -5,7 +5,10 @@ branca==0.8.2
 certifi==2026.7.22
 charset-normalizer==3.5.2
 click==8.5.0
+contourpy==1.4.0
+cycler==0.12.1
 folium==0.20.0
+fonttools==4.67.0
 geographiclib==2.1
 geopandas==1.2.0
 geopy==2.5.0
@@ -15,7 +18,9 @@ itsdangerous==2.2.0
 Jinja2==3.1.6
 jsonschema==4.26.0
 jsonschema-specifications==2025.9.1
+kiwisolver==1.5.1
 MarkupSafe==3.0.4
+matplotlib==3.11.2
 narwhals==2.27.1
 networkx==3.7
 numpy==2.5.4
@@ -27,6 +32,7 @@ protobuf==7.36.2
 pyarrow==26.0.0
 pydeck==0.9.3
 pyogrio==0.13.0
+pyparsing==3.3.3
 pyproj==3.8.0
 python-dateutil==2.9.0.post0
 python-multipart==0.0.32
