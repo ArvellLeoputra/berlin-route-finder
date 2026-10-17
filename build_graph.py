@@ -9,6 +9,6 @@ os.makedirs("data", exist_ok=True)
 for mode in ["walk", "bike"]:
     print(f"Downloading {mode} network...")
     G = ox.graph_from_point(CENTER, dist=RADIUS, network_type=mode)
-    filename = f"data/{mode}.graphml"
+    filename = f"data/{mode}.graphml.gz"
     ox.save_graphml(G, filename)
     print(f"Saved {filename} ({len(G.nodes)} nodes)")

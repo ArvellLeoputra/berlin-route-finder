@@ -27,10 +27,11 @@ def find_place(name, label):
 
     return point
 
+
 # Caching to avoid repeated graph loading
 @st.cache_resource(show_spinner=False)
 def load_saved_graph(mode):
-    return ox.load_graphml(f"data/{mode}.graphml")
+    return ox.load_graphml(f"data/{mode}.graphml.gz")
 
 
 st.title("Berlin Route Finder")
