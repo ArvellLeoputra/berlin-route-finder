@@ -2,14 +2,14 @@ import folium
 import osmnx as ox
 import networkx as nx
 
-def load_graph(start, end, buffer=500):
+def load_graph(start, end, mode="walk", buffer=500):
     midpoint = ((start[0] + end[0]) / 2, (start[1] + end[1]) / 2)
     straight = ox.distance.great_circle(start[0], start[1], end[0], end[1])
     
     G = ox.graph_from_point(
         midpoint,
         dist=straight / 2 + buffer,
-        network_type="walk"
+        network_type=mode
     )
     return G
 
