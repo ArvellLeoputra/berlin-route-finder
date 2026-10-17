@@ -3,6 +3,9 @@ import osmnx as ox
 from streamlit_folium import st_folium
 from routing import load_graph, find_route, make_map
 
+CENTER = (52.5163, 13.3777)  # Brandenburger Tor coordinates
+RADIUS = 5000
+
 
 # Caching to avoid repeated geocoding
 @st.cache_data(show_spinner=False)
@@ -12,19 +15,26 @@ def cached_geodata(place):
 
 def find_place(name, label):
     try:
-        return cached_geodata(name)
+        point = cached_geodata(name)
     except Exception:
         st.error(f"Couldn't find the {label} '{name}'. Try another name.")
         st.stop()
 
+    dist = ox.distance.great_circle(CENTER[0], CENTER[1], point[0], point[1])
+    if dist > RADIUS:
+        st.error(f"The {label} '{name}' is outside the covered area (5 km around Brandenburger Tor).")
+        st.stop()
+
+    return point
 
 # Caching to avoid repeated graph loading
 @st.cache_resource(show_spinner=False)
-def cached_graph(start, end, mode):
-    return load_graph(start, end, mode=mode)
+def load_saved_graph(mode):
+    return ox.load_graphml(f"data/{mode}.graphml")
 
 
 st.title("Berlin Route Finder")
+st.caption("Covers central Berlin, within 5 km of Brandenburger Tor.")
 
 start_name = st.text_input("Start")
 end_name = st.text_input("Destination")
@@ -34,6 +44,10 @@ mode_label = st.radio("Mode", list(modes), horizontal=True)
 mode, speed = modes[mode_label]
 
 if st.button("Find route"):
+    # start fresh, so a failed search doesn't bring back an old route
+    for key in ["map", "distance", "speed", "query"]:
+        st.session_state.pop(key, None)
+
     if not start_name or not end_name:
         st.warning("Please enter both a start and a destination.")
         st.stop()
@@ -42,7 +56,7 @@ if st.button("Find route"):
     end = find_place(end_name, "destination")
 
     with st.spinner("Loading streets..."):
-        G = cached_graph(start, end, mode)
+        G = load_saved_graph(mode)
     route, distance = find_route(G, start, end)
 
     # Keep the route between reruns, otherwise the map flashes and disappears
