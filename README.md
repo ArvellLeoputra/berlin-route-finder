@@ -6,7 +6,7 @@ Shortest walking and cycling routes on Berlin's real street network, computed on
 
 The first version downloaded streets for every search and took over a minute per query. The current version loads the street graph once in about 5 seconds, then answers each search in under half a second.
 
-![Screenshot](dashboard.png)
+![Screenshot](images/dashboard.png)
 
 ## How it got faster
 
@@ -27,13 +27,13 @@ The first version downloaded streets for every search and took over a minute per
 
 Walking routes, measured locally on a MacBook Air M3 (16 GB RAM), Python 3.14, OSMnx 2.1.
 
-Preloaded: time per search after the walk graph (90,663 intersections) is loaded. Loading takes 5.5 s, once, when the app starts. Best of 5 runs (`benchmark.py`).
+Preloaded: time per search after the walk graph (90,663 intersections) is loaded. Loading takes 5.5 s, once, when the app starts. Best of 5 runs (`benchmarks/benchmark.py`).
 
-Live download: total time per search (download + routing), measured once per route (`benchmark_live.py`); timings depend on the load of the public Overpass server.
+Live download: total time per search (download + routing), measured once per route (`benchmarks/benchmark_live.py`); timings depend on the load of the public Overpass server.
 
 Both versions find the same routes. The download was almost all of the old cost: routing itself took under 0.4 s there too.
 
-![Search time vs. route length](time_vs_length.png)
+![Search time vs. route length](images/time_vs_length.png)
 
 Over 200 random routes (best of 3 each), a search costs about 0.14 s plus 30 ms per km. The fixed part comes from finding the nearest intersections, which rebuilds a search index over all 90,000 intersections on every query. On the small graphs of the old version, the same short route took only 0.02 s. The growth flattens slightly for the longest routes, which cover most of the graph anyway.
 
@@ -69,4 +69,4 @@ streamlit run app.py
 
 To rebuild the street graphs: `python build_graph.py`.
 
-To reproduce the timings: `python benchmark.py`, `python benchmark_live.py` and `python benchmark_scaling.py`.
+To reproduce the timings: `python -m benchmarks.benchmark`, `python -m benchmarks.benchmark_live` and `python -m benchmarks.benchmark_scaling`.

@@ -40,6 +40,6 @@ plt.ylabel("Search time (s)")
 plt.title("Search time vs. route length (preloaded walk graph)")
 plt.legend()
 plt.tight_layout()
-plt.savefig("time_vs_length.png", dpi=150)
+plt.savefig("images/time_vs_length.png", dpi=150)
 
 print(f"{len(times)} routes, fixed cost {intercept:.3f} s, {slope * 1000:.1f} ms per km")
