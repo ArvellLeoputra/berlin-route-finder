@@ -1,45 +1,52 @@
-import random, time
-import osmnx as ox
-import matplotlib.pyplot as plt
-import numpy as np
+import random
 
-from routing import find_route
+import matplotlib.pyplot as plt
+import networkx as nx
+import osmnx as ox
+
+from routing import build_index
+from benchmarks.timing import best_time
 
 G = ox.load_graphml("data/walk.graphml.gz")
 nodes = list(G.nodes)
+index = build_index(G)
 random.seed(0)  # same random routes every run
 
-dists, times = [], []
-for _ in range(200):
+old_t, new_t, dists = [], [], []
+for i in range(200):
     a, b = random.sample(nodes, 2)
     start = (G.nodes[a]["y"], G.nodes[a]["x"])
     end = (G.nodes[b]["y"], G.nodes[b]["x"])
 
-    # time each route 3 times and keep the fastest, to reduce noise
-    best = float("inf")
     try:
-        for _ in range(3):
-            t0 = time.perf_counter()
-            _, d = find_route(G, start, end)
-            best = min(best, time.perf_counter() - t0)
-    except Exception:
+        t_old, d = best_time(G, start, end, repeats=3)
+        t_new, _ = best_time(G, start, end, index=index, repeats=3)
+    except nx.NetworkXNoPath:
         continue  # some pairs have no walkable connection
-    times.append(best)
-    dists.append(d / 1000)
+    old_t.append(t_old)
+    new_t.append(t_new)
+    dists.append(d / 1000)  # meters to km
 
-# straight-line fit: intercept = fixed cost, slope = extra time per km
-slope, intercept = np.polyfit(dists, times, 1)
-xs = np.linspace(0, max(dists), 100)
+    if (i + 1) % 20 == 0:
+        print(f"{i + 1} of 200 routes done")
 
-plt.scatter(dists, times, alpha=0.5, s=15)
-plt.plot(xs, slope * xs + intercept, color="red",
-         label=f"fit: {intercept:.2f} s + {slope * 1000:.0f} ms/km")
-plt.ylim(bottom=0)
-plt.xlabel("Route length (km)")
-plt.ylabel("Search time (s)")
-plt.title("Search time vs. route length (preloaded walk graph)")
-plt.legend()
-plt.tight_layout()
-plt.savefig("images/time_vs_length.png", dpi=150)
+fig, ax = plt.subplots(figsize=(8, 4.5))
+ax.scatter(dists, old_t, alpha=0.5, s=15, label="without index")
+ax.scatter(dists, new_t, alpha=0.5, s=15, label="with index")
+ax.set_ylim(0, 0.8)
+ax.set_xlabel("Route length (km)")
+ax.set_ylabel("Search time (s)")
+ax.set_title("Search time vs. route length (preloaded walk graph)")
+ax.legend(frameon=False)
+ax.spines[["top", "right"]].set_visible(False)
+fig.tight_layout()
+fig.savefig("images/time_vs_length.png", dpi=150)
 
-print(f"{len(times)} routes, fixed cost {intercept:.3f} s, {slope * 1000:.1f} ms per km")
+# points above the y-axis limit are not drawn, to avoid outliers
+cut = sum(t > 0.8 for t in old_t + new_t)
+if cut:
+    print(f"{cut} point(s) above 0.8 s not shown")
+
+mean_old = sum(old_t) / len(old_t)
+mean_new = sum(new_t) / len(new_t)
+print(f"{len(dists)} routes, mean {mean_old:.3f} s without index, {mean_new:.3f} s with index")
