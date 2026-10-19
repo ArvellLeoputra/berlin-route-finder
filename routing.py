@@ -1,6 +1,9 @@
 import folium
 import osmnx as ox
 import networkx as nx
+import numpy as np
+
+from sklearn.neighbors import BallTree
 
 def load_graph(start, end, mode="walk", buffer=500):
     midpoint = ((start[0] + end[0]) / 2, (start[1] + end[1]) / 2)
@@ -14,9 +17,29 @@ def load_graph(start, end, mode="walk", buffer=500):
     return G
 
 
-def find_route(G, start, end):
-    start_node = ox.nearest_nodes(G, X=start[1], Y=start[0])
-    end_node = ox.nearest_nodes(G, X=end[1], Y=end[0])
+def build_index(G):
+    nodes = list(G.nodes)
+    # lat/lon in radians, because haversine expects radians
+    coords = np.radians([(G.nodes[n]["y"], G.nodes[n]["x"]) for n in nodes])
+    # haversine = distance on a sphere
+    tree = BallTree(coords, metric="haversine")
+    return tree, nodes
+
+
+def nearest_node(index, point):
+    tree, nodes = index
+    coords = np.radians([point])
+    _, positions = tree.query(coords, k=1)
+    return nodes[positions[0][0]]
+
+
+def find_route(G, start, end, index=None):
+    if index is None:
+        start_node = ox.nearest_nodes(G, X=start[1], Y=start[0])
+        end_node = ox.nearest_nodes(G, X=end[1], Y=end[0])
+    else:
+        start_node = nearest_node(index, start)
+        end_node = nearest_node(index, end)
 
     route = nx.shortest_path(G, start_node, end_node, weight="length")
     distance = nx.shortest_path_length(G, start_node, end_node, weight="length")
