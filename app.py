@@ -1,7 +1,7 @@
 import streamlit as st
 import osmnx as ox
 from streamlit_folium import st_folium
-from routing import load_graph, find_route, make_map
+from routing import load_graph, find_route, make_map, build_index
 
 CENTER = (52.5163, 13.3777)  # Brandenburger Tor coordinates
 RADIUS = 5000
@@ -34,8 +34,19 @@ def load_saved_graph(mode):
     return ox.load_graphml(f"data/{mode}.graphml.gz")
 
 
+# Built once at launch, so searches only look things up
+@st.cache_resource(show_spinner=False)
+def load_index(mode):
+    return build_index(load_saved_graph(mode))
+
+
 st.title("Berlin Route Finder")
 st.caption("Covers central Berlin, within 5 km of Brandenburger Tor.")
+
+with st.spinner("Loading map data..."):
+    for m in ("walk", "bike"):
+        load_saved_graph(m)
+        load_index(m)
 
 start_name = st.text_input("Start")
 end_name = st.text_input("Destination")
@@ -58,7 +69,8 @@ if st.button("Find route"):
 
     with st.spinner("Loading streets..."):
         G = load_saved_graph(mode)
-    route, distance = find_route(G, start, end)
+        index = load_index(mode)
+    route, distance = find_route(G, start, end, index=index)
 
     # Keep the route between reruns, otherwise the map flashes and disappears
     st.session_state["map"] = make_map(G, route, distance, start_name, end_name)
