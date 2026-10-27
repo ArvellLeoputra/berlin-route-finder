@@ -6,9 +6,11 @@ Shortest walking and cycling routes on Berlin's real street network, computed on
 
 **Live:** https://berlin-route-finder.streamlit.app
 
-The first version downloaded streets for every search and took over a minute per query. The current version loads the walk and bike graphs and their nearest-intersection indexes once at startup (about 9 seconds in total on a 2021 MacBook Pro with an M1 Pro chip), then answers a search in a few milliseconds for short routes and up to about 0.2 seconds for the longest ones in the covered area.
-
 ![Screenshot](images/dashboard.png)
+
+The first version downloaded streets for every search and took over a minute per query. The current version loads the walk and bike graphs and their nearest-intersection indexes once at startup (about 9 seconds in total on a 2021 MacBook Pro with an M1 Pro chip).
+
+After that, a search takes a few milliseconds for short routes and up to about 0.2 seconds for the longest ones in the covered area.
 
 ## How it got faster
 
@@ -40,6 +42,10 @@ All versions find the same routes. The download was almost all of the original c
 ![Search time vs. route length](images/time_vs_length.png)
 
 The same 200 random routes, each timed best of 3, with and without the index (`benchmarks/benchmark_scaling.py`). Without it, every search pays a fixed cost of about 0.2 s, because OSMnx prepares its lookup over all 90,663 intersections from scratch on each call. Building it once removes that cost, so short routes now take a few milliseconds. What remains is the path search itself, which grows with route length, up to about 0.17 s for 12 km. Across the 200 routes, the mean search time is 0.28 s without the index and 0.07 s with it.
+
+## Tests
+
+Run `pytest` to run 5 tests. They check known route distances (865 m, 3.6 km, 8.5 km), and that the fast nearest-intersection index gives the same result as OSMnx.
 
 ## How it works
 
@@ -75,3 +81,5 @@ streamlit run app.py
 To rebuild the street graphs: `python build_graph.py`.
 
 To reproduce the timings: `python -m benchmarks.benchmark`, `python -m benchmarks.benchmark_live` and `python -m benchmarks.benchmark_scaling`.
+
+To run the tests: `pytest`
