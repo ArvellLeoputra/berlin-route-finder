@@ -1,11 +1,10 @@
 import streamlit as st
-import osmnx as ox
+import osmnx as ox#
+
 from streamlit_folium import st_folium
-from routing import find_route, make_map, build_index
 
-CENTER = (52.5163, 13.3777)  # Brandenburger Tor coordinates
-RADIUS = 5000
-
+from src.config import CENTER, RADIUS
+from src.routing import find_route, make_map, build_index
 
 # Caching to avoid repeated geocoding
 @st.cache_data(show_spinner=False)

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import osmnx as ox
 
-from routing import build_index
+from src.routing import build_index
 from benchmarks.timing import best_time
 
 G = ox.load_graphml("data/walk.graphml.gz")

@@ -1,6 +1,6 @@
 import time
 import osmnx as ox
-from routing import load_graph, find_route
+from src.routing import load_graph, find_route
 
 # skip OSMnx saved downloads
 ox.settings.use_cache = False

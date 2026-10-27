@@ -54,6 +54,20 @@ Run `pytest` to run 5 tests. They check known route distances (865 m, 3.6 km, 8.
 - **Routing:** start and end snap to the nearest intersection using a BallTree built once at startup, then a bidirectional Dijkstra search in NetworkX finds the shortest path and its length in one pass, weighted by street length.
 - **App:** Streamlit, with the graphs and indexes loaded at startup and the route kept in session state so it survives Streamlit's reruns.
 
+## Project structure
+
+```
+app.py                 Streamlit app (entry point)
+src/
+  routing.py           graph helpers, nearest-intersection index, routing, map
+  config.py            covered area (center and radius)
+  build_graph.py       downloads and saves the street graphs
+benchmarks/            timing scripts
+tests/                 pytest tests
+data/                  preloaded street graphs (.graphml.gz)
+images/                screenshot and benchmark chart
+```
+
 ## Limitations
 
 - Only covers places within 5 km of Brandenburger Tor.
@@ -78,7 +92,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-To rebuild the street graphs: `python build_graph.py`.
+To rebuild the street graphs: `python -m src.build_graph`.
 
 To reproduce the timings: `python -m benchmarks.benchmark`, `python -m benchmarks.benchmark_live` and `python -m benchmarks.benchmark_scaling`.
 

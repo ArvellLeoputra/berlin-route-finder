@@ -1,5 +1,5 @@
 import time
-from routing import find_route
+from src.routing import find_route
 
 
 # fastest of n runs (s) and route length (m)

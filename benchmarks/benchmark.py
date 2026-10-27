@@ -1,6 +1,6 @@
 import time
 import osmnx as ox
-from routing import build_index
+from src.routing import build_index
 from benchmarks.timing import best_time
 
 routes = {

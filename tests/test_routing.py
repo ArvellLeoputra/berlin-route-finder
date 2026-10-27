@@ -1,7 +1,7 @@
 import osmnx as ox
 import pytest
 
-from routing import build_index, find_route, nearest_node
+from src.routing import build_index, find_route, nearest_node
 
 # Load each graph once and share it between all tests
 @pytest.fixture(scope="module")
