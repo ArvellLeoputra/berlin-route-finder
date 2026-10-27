@@ -33,19 +33,23 @@ for i in range(200):
 fig, ax = plt.subplots(figsize=(8, 4.5))
 ax.scatter(dists, old_t, alpha=0.5, s=15, label="without index")
 ax.scatter(dists, new_t, alpha=0.5, s=15, label="with index")
-ax.set_ylim(0, 0.8)
+ax.set_ylim(0, 0.5)
 ax.set_xlabel("Route length (km)")
 ax.set_ylabel("Search time (s)")
 ax.set_title("Search time vs. route length (preloaded walk graph)")
-ax.legend(frameon=False)
+
+leg = ax.legend(loc="upper left", frameon=False, markerscale=1.5)
+for handle in leg.legend_handles:
+    handle.set_alpha(1)
+    
 ax.spines[["top", "right"]].set_visible(False)
 fig.tight_layout()
 fig.savefig("images/time_vs_length.png", dpi=150)
 
 # points above the y-axis limit are not drawn, to avoid outliers
-cut = sum(t > 0.8 for t in old_t + new_t)
+cut = sum(t > 0.5 for t in old_t + new_t)
 if cut:
-    print(f"{cut} point(s) above 0.8 s not shown")
+    print(f"{cut} point(s) above 0.5 s not shown")
 
 mean_old = sum(old_t) / len(old_t)
 mean_new = sum(new_t) / len(new_t)

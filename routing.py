@@ -41,8 +41,7 @@ def find_route(G, start, end, index=None):
         start_node = nearest_node(index, start)
         end_node = nearest_node(index, end)
 
-    route = nx.shortest_path(G, start_node, end_node, weight="length")
-    distance = nx.shortest_path_length(G, start_node, end_node, weight="length")
+    distance, route = nx.bidirectional_dijkstra(G, start_node, end_node, weight="length")
 
     return route, distance
 
