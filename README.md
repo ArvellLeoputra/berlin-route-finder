@@ -1,5 +1,7 @@
 # Berlin Route Finder
 
+![Tests](https://github.com/ArvellLeoputra/berlin-route-finder/actions/workflows/tests.yml/badge.svg)
+
 Shortest walking and cycling routes on Berlin's real street network, computed on OpenStreetMap data and shown on an interactive map.
 
 **Live:** https://berlin-route-finder.streamlit.app
