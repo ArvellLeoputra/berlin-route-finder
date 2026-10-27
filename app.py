@@ -1,7 +1,7 @@
 import streamlit as st
 import osmnx as ox
 from streamlit_folium import st_folium
-from routing import load_graph, find_route, make_map, build_index
+from routing import find_route, make_map, build_index
 
 CENTER = (52.5163, 13.3777)  # Brandenburger Tor coordinates
 RADIUS = 5000
@@ -44,9 +44,9 @@ st.title("Berlin Route Finder")
 st.caption("Covers central Berlin, within 5 km of Brandenburger Tor.")
 
 with st.spinner("Loading map data..."):
-    for m in ("walk", "bike"):
-        load_saved_graph(m)
-        load_index(m)
+    for mode_name in ("walk", "bike"):
+        load_saved_graph(mode_name)
+        load_index(mode_name)
 
 start_name = st.text_input("Start")
 end_name = st.text_input("Destination")

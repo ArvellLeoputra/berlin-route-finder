@@ -1,6 +1,7 @@
 import osmnx as ox
 from routing import load_graph, find_route, make_map
 
+
 def prompt_location(prompt):
     while True:
         name = input(prompt)

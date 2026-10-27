@@ -1,6 +1,7 @@
 import time
 from routing import find_route
 
+
 # fastest of n runs (s) and route length (m)
 def best_time(G, start, end, index=None, repeats=5):
     best = float("inf")

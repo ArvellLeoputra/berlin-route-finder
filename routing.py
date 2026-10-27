@@ -5,6 +5,7 @@ import numpy as np
 
 from sklearn.neighbors import BallTree
 
+
 def load_graph(start, end, mode="walk", buffer=500):
     midpoint = ((start[0] + end[0]) / 2, (start[1] + end[1]) / 2)
     straight = ox.distance.great_circle(start[0], start[1], end[0], end[1])

@@ -41,7 +41,7 @@ ax.set_title("Search time vs. route length (preloaded walk graph)")
 leg = ax.legend(loc="upper left", frameon=False, markerscale=1.5)
 for handle in leg.legend_handles:
     handle.set_alpha(1)
-    
+
 ax.spines[["top", "right"]].set_visible(False)
 fig.tight_layout()
 fig.savefig("images/time_vs_length.png", dpi=150)
