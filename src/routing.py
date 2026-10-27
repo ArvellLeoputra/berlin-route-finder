@@ -1,4 +1,6 @@
+import math
 import folium
+
 import osmnx as ox
 import networkx as nx
 import numpy as np
@@ -34,7 +36,27 @@ def nearest_node(index, point):
     return nodes[positions[0][0]]
 
 
-def find_route(G, start, end, index=None):
+EARTH_RADIUS = 6371000
+
+def make_heuristic(G, target):
+    # A* guide function: straight-line distance from any node to the target
+    # A* never skips the best path, since its straight-line distance is never longer than the actual path distance
+    t = G.nodes[target]
+    t_lat, t_lon = math.radians(t["y"]), math.radians(t["x"])
+    t_cos = math.cos(t_lat)
+
+    def heuristic(node, _target):
+        n = G.nodes[node]
+        n_lat, n_lon = math.radians(G.nodes[node]["y"]), math.radians(G.nodes[node]["x"])
+        # Haversine formula for the straight-line distance
+        a = (math.sin((t_lat - n_lat) /2) ** 2
+             + math.cos(n_lat) * t_cos * math.sin((t_lon - n_lon) / 2) ** 2)
+        return 2 * EARTH_RADIUS * math.asin(math.sqrt(a))
+    
+    return heuristic
+
+
+def find_route(G, start, end, index=None, algorithm="bidirectional"):
     if index is None:
         start_node = ox.nearest_nodes(G, X=start[1], Y=start[0])
         end_node = ox.nearest_nodes(G, X=end[1], Y=end[0])
@@ -42,7 +64,14 @@ def find_route(G, start, end, index=None):
         start_node = nearest_node(index, start)
         end_node = nearest_node(index, end)
 
-    distance, route = nx.bidirectional_dijkstra(G, start_node, end_node, weight="length")
+    if algorithm == "bidirectional":
+        distance, route = nx.bidirectional_dijkstra(G, start_node, end_node, weight="length")
+    elif algorithm == "astar":
+        heuristic = make_heuristic(G, end_node)
+        route = nx.astar_path(G, start_node, end_node, heuristic=heuristic, weight="length")
+        distance = nx.path_weight(G, route, weight="length")
+    else:
+        raise ValueError(f"Unknown algorithm: {algorithm}")
 
     return route, distance
 

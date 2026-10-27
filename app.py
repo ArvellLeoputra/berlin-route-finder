@@ -69,7 +69,7 @@ if st.button("Find route"):
     with st.spinner("Loading streets..."):
         G = load_saved_graph(mode)
         index = load_index(mode)
-    route, distance = find_route(G, start, end, index=index)
+    route, distance = find_route(G, start, end, index=index, algorithm="astar")
 
     # Keep the route between reruns, otherwise the map flashes and disappears
     st.session_state["map"] = make_map(G, route, distance, start_name, end_name)
