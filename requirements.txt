@@ -5,3 +5,4 @@ networkx==3.7
 folium==0.20.0
 scikit-learn==1.9.1
 matplotlib==3.11.2
+pytest==9.1.1
