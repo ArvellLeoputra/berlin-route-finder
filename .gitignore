@@ -3,4 +3,5 @@ __pycache__/
 *.html
 cache/
 data/*.graphml
+scratch/
 scratch*.py
