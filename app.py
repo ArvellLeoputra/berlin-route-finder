@@ -61,7 +61,11 @@ modes = {"Walk": ("walk", 5), "Bike": ("bike", 15)}
 mode_label = st.radio("Mode", list(modes), horizontal=True)
 mode, speed = modes[mode_label]
 
-errands = st.multiselect("Errands on the way (optional)", ["Post office", "Pharmacy", "Groceries"])
+errands = st.multiselect(
+    "Errands on the way (optional, up to 4)",
+    sorted(load_saved_shops()),
+    max_selections=4,
+)
 
 if st.button("Find route"):
     # start fresh, so a failed search doesn't bring back an old route

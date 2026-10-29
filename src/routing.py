@@ -75,7 +75,14 @@ def find_route(G, start, end, index=None, algorithm="bidirectional"):
 
     return route, distance
 
-STOP_COLORS = {"Post office": "#2f6feb", "Pharmacy": "#0f9d78", "Groceries": "#ef5350"}
+STOP_COLORS = {
+    "Post office": "#2f6feb",
+    "Pharmacy": "#0f9d78",
+    "Groceries": "#ef5350",
+    "Bakery": "#d97706",
+    "ATM": "#7c3aed",
+    "Drugstore": "#db2777",
+}
 
 
 def make_map(G, route, distance, start_name, end_name, stops=None):

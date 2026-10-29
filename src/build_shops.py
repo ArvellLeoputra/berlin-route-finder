@@ -9,6 +9,9 @@ KINDS = {
     "Post office": {"amenity": "post_office"},
     "Pharmacy": {"amenity": "pharmacy"},
     "Groceries": {"shop": "supermarket"},
+    "Bakery": {"shop": "bakery"},
+    "ATM": {"amenity": "atm"},
+    "Drugstore": {"shop": "chemist"},
 }
 
 FILENAME = "data/shops.csv"
