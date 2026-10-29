@@ -1,0 +1,663 @@
+kind,name,lat,lon,osm_id
+Post office,Deutsche Post,52.519698,13.411554,node/89274887
+Post office,Deutsche Post,52.51146,13.416955,node/269477697
+Post office,Zeitungsladen Parlak,52.550453,13.37885,node/644659553
+Post office,Kiosk,52.543062,13.392686,node/674019820
+Post office,tabaCCenter,52.506645,13.416089,node/1251071263
+Post office,,52.509087,13.323636,node/1385782504
+Post office,StoExpress Germany GmbH,52.512812,13.417626,node/1552575486
+Post office,Deutsche Post,52.504872,13.33191,node/1881516186
+Post office,Kiosk,52.498962,13.313595,node/2021286592
+Post office,Zeitungen & Tabakwaren Barth,52.483956,13.36129,node/2032547417
+Post office,PIN Mail AG,52.50217,13.352911,node/2046262883
+Post office,,52.488885,13.385817,node/2053207124
+Post office,DHL BVG Kiosk,52.492694,13.421989,node/2485492744
+Post office,P&P Bürobedarf,52.518729,13.342818,node/2724240147
+Post office,Lotto Post Tabak,52.532285,13.435256,node/2834832470
+Post office,,52.516458,13.440231,node/4323171151
+Post office,,52.51558,13.39034,node/4464537690
+Post office,Post-Point,52.527672,13.327612,node/4607553084
+Post office,Uni-Shop,52.48603,13.338967,node/5153424275
+Post office,DHL,52.52728,13.339374,node/5856191985
+Post office,Lotto Post,52.500116,13.423937,node/5922090419
+Post office,Deutsche Post,52.485484,13.354407,node/5945635505
+Post office,Späti,52.49426,13.434079,node/6463564996
+Post office,Postfiliale 554,52.535671,13.433443,node/7025879082
+Post office,Deutsche Post,52.507427,13.39452,node/7454045232
+Post office,UPS Access Point,52.487128,13.374769,node/8112899380
+Post office,Deutsche Post Filiale 501,52.529263,13.384441,node/9006816146
+Post office,Pin Mail,52.511779,13.313128,node/9174631310
+Post office,DHL,52.496327,13.386518,node/9329133969
+Post office,DHL Paketshop 444,52.498522,13.387927,node/9329137097
+Post office,Hermes,52.49815,13.353229,node/9991258483
+Post office,The Winsy Späti,52.533246,13.424969,node/10015764560
+Post office,,52.50094,13.412678,node/10159421697
+Post office,Hermes PaketShop,52.488669,13.424458,node/10661022115
+Post office,,52.522488,13.378427,node/10673727945
+Post office,DHL Postfiliale 543,52.547483,13.41261,node/12309529501
+Post office,Mail Boxes Etc.,52.500103,13.330552,node/12420722659
+Post office,DHL,52.523356,13.426867,node/12492673807
+Post office,GLS PaketShop,52.560834,13.371812,node/12526680118
+Post office,DHL,52.510131,13.434031,node/12557626414
+Post office,,52.556664,13.358786,node/12587517670
+Post office,Hermes PaketShop,52.56082,13.371781,node/12757052521
+Post office,GLS PaketShop,52.49529,13.420931,node/12823204113
+Post office,DHL im Bäcker Pera,52.485209,13.374518,node/12846714110
+Post office,Hermes PaketShop,52.485267,13.362931,node/13302437343
+Post office,Deutsche Post Filiale 537,52.483984,13.361313,node/13533760801
+Post office,Hermes,52.5352,13.434421,node/13705942827
+Post office,Postfiliale 560,52.528329,13.424663,node/13705966288
+Post office,Hermes PaketShop,52.529333,13.338555,node/13745973630
+Post office,GLS PaketShop,52.551472,13.338423,node/13761087757
+Post office,UPS Access Point,52.545437,13.358031,node/13763702220
+Post office,DHL,52.54542,13.357998,node/13763704146
+Post office,GLS PaketShop,52.545409,13.357979,node/13763706195
+Post office,Nova Post 1,52.50797,13.39191,node/13808413801
+Post office,DHL Paketshop 503,52.549398,13.415998,node/14021767797
+Post office,DHL,52.495703,13.387728,node/14059308425
+Post office,GLS PaketShop,52.540707,13.416095,node/14080703830
+Post office,DHL PaketShop,52.540701,13.416114,node/14080719380
+Post office,GLS PaketShop,52.493718,13.415026,node/14184994822
+Post office,DPD Pickup,52.493734,13.415022,node/14184995690
+Post office,Hermes PaketShop,52.518646,13.342733,node/14201573192
+Post office,Hermes PaketShop,52.520327,13.341771,node/14201602345
+Post office,Deutsche Post Filiale 547,52.490001,13.400595,node/14325489601
+Pharmacy,Leipziger Apotheke,52.510556,13.395863,node/69226035
+Pharmacy,Bundes-Apotheke,52.486554,13.331406,node/76519952
+Pharmacy,Axels Apotheke,52.507125,13.394788,node/78244254
+Pharmacy,Nordland Apotheke,52.530698,13.384125,node/87036261
+Pharmacy,Friedrichstadt Apotheke,52.511769,13.386884,node/87040402
+Pharmacy,Panorama Apotheke,52.521847,13.409819,node/89274697
+Pharmacy,Bezirksapotheke am Roten Rathaus,52.519781,13.410892,node/89274888
+Pharmacy,Fischerinsel-Apotheke,52.513381,13.405352,node/89275182
+Pharmacy,Alte Roland-Apotheke,52.526463,13.350122,node/250195921
+Pharmacy,Virchow Apotheke,52.54973,13.349826,node/251737915
+Pharmacy,Wotan Apotheke,52.506903,13.321834,node/254307048
+Pharmacy,Nordring Apotheke,52.549263,13.413305,node/259081139
+Pharmacy,Vita Apotheke,52.55091,13.407908,node/259081143
+Pharmacy,Wins-Apotheke,52.536008,13.427062,node/267366952
+Pharmacy,Grimm-Apotheke,52.493536,13.413493,node/268981834
+Pharmacy,Apotheke am Engelbecken,52.507579,13.414104,node/269478054
+Pharmacy,Kolberger Apotheke,52.543989,13.373598,node/271282692
+Pharmacy,Kaiser Apotheke,52.488942,13.393962,node/272662737
+Pharmacy,Galenus-Apotheke,52.523629,13.386715,node/275887592
+Pharmacy,Leo Apotheke,52.546419,13.358656,node/307983960
+Pharmacy,Ahorn Apotheke,52.48019,13.342814,node/310377174
+Pharmacy,M.C. Apotheke,52.502821,13.316735,node/311089081
+Pharmacy,Arkona Apotheke,52.535584,13.406353,node/313933591
+Pharmacy,Insel Apotheke,52.501508,13.311028,node/314022672
+Pharmacy,Regina Apotheke,52.491277,13.344768,node/315803527
+Pharmacy,Akazien-Apotheke,52.4866,13.35653,node/315820338
+Pharmacy,Petersburger Apotheke,52.521468,13.449635,node/317148496
+Pharmacy,Fräulein Beckers Lieblingsapotheke,52.517458,13.44288,node/317614303
+Pharmacy,Merlin-Apotheke,52.526787,13.414945,node/319092509
+Pharmacy,Apotheke am Koppenplatz,52.527486,13.397818,node/322151533
+Pharmacy,Apotheke am Strausberger Platz,52.517783,13.429225,node/324363717
+Pharmacy,Hölderlin-Apotheke,52.503192,13.388315,node/330966646
+Pharmacy,Apotheke am Nauener Platz,52.551654,13.366919,node/332961993
+Pharmacy,Dr. Gropler´s Apotheke,52.549867,13.368663,node/332964520
+Pharmacy,Driesener Apotheke,52.552891,13.405828,node/333909847
+Pharmacy,Grüne Apotheke 62,52.507096,13.306326,node/336117214
+Pharmacy,Apotheke Carmer-7,52.506889,13.323447,node/340129941
+Pharmacy,Leibniz Apotheke Berlin,52.506089,13.314094,node/349301668
+Pharmacy,Apotheke am Flughafen,52.484537,13.384789,node/353744167
+Pharmacy,Arcaden Apotheke,52.549527,13.415313,node/356807869
+Pharmacy,Hutten-Apotheke,52.527039,13.330279,node/366186442
+Pharmacy,Jagow-Apotheke,52.524205,13.33432,node/366536622
+Pharmacy,Gethsemane-Apotheke,52.547683,13.41462,node/371157962
+Pharmacy,Dorotheenstadt Apotheke,52.51856,13.387958,node/380498298
+Pharmacy,MediosApotheke,52.52472,13.379458,node/380498345
+Pharmacy,Reichenberger Apotheke,52.494197,13.435618,node/410135921
+Pharmacy,Kaiser Wilhelm Apotheke,52.486059,13.356677,node/412408145
+Pharmacy,Apotheke am Helmholtzplatz,52.542005,13.420071,node/415318053
+Pharmacy,Apotheke an der Oper,52.511491,13.308319,node/416660118
+Pharmacy,Minerva-Apotheke,52.511167,13.305522,node/416660134
+Pharmacy,Bong-Apotheke,52.509622,13.305474,node/416660138
+Pharmacy,Goethe Apotheke,52.509025,13.306719,node/416660142
+Pharmacy,Herz Apotheke,52.55144,13.382799,node/419545768
+Pharmacy,Mehringplatz Apotheke Berlin,52.499708,13.391255,node/440322354
+Pharmacy,Libertas Apotheke,52.485082,13.426638,node/440335563
+Pharmacy,Apotheke zum Goldenen Einhorn,52.491903,13.394299,node/443604961
+Pharmacy,Cecilien-Apotheke,52.546825,13.412643,node/448913486
+Pharmacy,Arminius-Apotheke,52.532922,13.412289,node/448915579
+Pharmacy,Zieten Apotheke,52.54497,13.368633,node/459166572
+Pharmacy,Easy Apotheke,52.491228,13.423494,node/459650830
+Pharmacy,Paul-Lincke-Apotheke,52.496664,13.419937,node/459653935
+Pharmacy,Müller-Apotheke,52.545171,13.360831,node/459799715
+Pharmacy,Europa Apotheke,52.516402,13.4407,node/461626277
+Pharmacy,Rathaus Apotheke,52.494356,13.383524,node/505990860
+Pharmacy,Opernviertel-Apotheke,52.512098,13.310518,node/520518100
+Pharmacy,Apotheke im Gesundbrunnen-Center,52.549969,13.38915,node/576608994
+Pharmacy,Brunnen Apotheke,52.550341,13.385563,node/581322478
+Pharmacy,Lessing Apotheke,52.542088,13.370166,node/585473264
+Pharmacy,MediosApotheke Hackescher Markt,52.524594,13.403242,node/595536654
+Pharmacy,Pluspunkt Apotheke Wedding,52.549295,13.353572,node/602531459
+Pharmacy,Apotheke im Karstadt Hermannplatz,52.487483,13.423894,node/604938266
+Pharmacy,Prenz’l-Apotheke,52.550241,13.414262,node/608524481
+Pharmacy,Gesundbrunnen- Apotheke,52.55057,13.384249,node/627415668
+Pharmacy,Jülicher Apotheke,52.553961,13.39234,node/644658975
+Pharmacy,die Neue Apotheke,52.526533,13.335731,node/645677466
+Pharmacy,Arminius Apotheke,52.526814,13.33655,node/645677469
+Pharmacy,Ansbacher Apotheke,52.503492,13.34293,node/646579859
+Pharmacy,Hubertus Apotheke am Salzufer,52.518356,13.322868,node/647943536
+Pharmacy,Ludwigs-Apotheke,52.523569,13.336335,node/650633578
+Pharmacy,Apotheke am Augustenburger Platz,52.541849,13.350374,node/658444284
+Pharmacy,Atlantis-Apotheke,52.513088,13.304809,node/661092195
+Pharmacy,Flora-Apotheke,52.517203,13.304348,node/661126965
+Pharmacy,Königin-Luise-Apotheke,52.49779,13.360923,node/670658040
+Pharmacy,Gervinus-Apotheke,52.504489,13.307555,node/674316062
+Pharmacy,Meraner Apotheke,52.486622,13.338673,node/703802174
+Pharmacy,Fortuna-Apotheke,52.48882,13.322473,node/715203882
+Pharmacy,Josephinen Apotheke,52.490151,13.322716,node/715203887
+Pharmacy,Goeben-Apotheke,52.4932,13.36672,node/730172940
+Pharmacy,Kurmark Apotheke,52.499449,13.363796,node/738996191
+Pharmacy,Sternlicht Apotheke,52.490431,13.409401,node/766742178
+Pharmacy,Apotheke am Moritzplatz,52.502899,13.412991,node/769365479
+Pharmacy,Urban-Apotheke,52.490864,13.415853,node/769847926
+Pharmacy,Körte-Apotheke,52.491993,13.413791,node/769847931
+Pharmacy,Bavaria-Apotheke,52.49791,13.340083,node/771332595
+Pharmacy,Prenzlauer Apotheke,52.535944,13.421815,node/775578347
+Pharmacy,Apotheke am Hansaplatz,52.518775,13.342923,node/816598789
+Pharmacy,Apotheke Berg,52.499278,13.419674,node/848509143
+Pharmacy,Utrechter Apotheke,52.550608,13.363001,node/854996274
+Pharmacy,Zieten Apotheke,52.498116,13.384792,node/928338769
+Pharmacy,Apotheke Q205,52.512264,13.390381,node/956306643
+Pharmacy,Mozart Apotheke,52.497644,13.430651,node/1018833559
+Pharmacy,Prinzen Apotheke,52.501085,13.408341,node/1083676123
+Pharmacy,Apotheke zum goldenen Anker,52.490346,13.427765,node/1110626664
+Pharmacy,Paul Gerhardt Apotheke,52.554324,13.345634,node/1234501223
+Pharmacy,Pluspunkt Apotheke Müllerstraße,52.550122,13.353039,node/1236581643
+Pharmacy,Apotheke zum Schwan,52.504349,13.409274,node/1246989790
+Pharmacy,Apotheke am Friedrichshain,52.523755,13.439892,node/1257075697
+Pharmacy,Vineta Apotheke,52.540542,13.393869,node/1298246171
+Pharmacy,Apotheke am Gartenplatz,52.538019,13.385471,node/1298511709
+Pharmacy,Kur-Apotheke,52.492043,13.386902,node/1315650095
+Pharmacy,Immanuel Apotheke,52.533075,13.422151,node/1374215630
+Pharmacy,Dominicus Apotheke,52.482443,13.349717,node/1397070332
+Pharmacy,Apotheke am Bayerischen Platz,52.488598,13.339066,node/1434256844
+Pharmacy,Esmarch Apotheke,52.532136,13.431803,node/1492336686
+Pharmacy,Apotheke Impuls,52.484639,13.428544,node/1527942471
+Pharmacy,MediosApotheke,52.52609,13.387555,node/1552051348
+Pharmacy,Vital-Apotheke,52.49888,13.420308,node/1624585364
+Pharmacy,Märkische Apotheke,52.548347,13.356214,node/1659884034
+Pharmacy,Schwanen Apotheke,52.532715,13.43824,node/1863567226
+Pharmacy,Fasanen-Apotheke,52.498779,13.324865,node/1905963630
+Pharmacy,Emser Apotheke,52.496763,13.319845,node/1906515104
+Pharmacy,Ranke-Apotheke,52.500024,13.330531,node/1914403852
+Pharmacy,Apotheke am Ludwigkirchplatz,52.49704,13.323402,node/1914552632
+Pharmacy,Cottbusserdamm Apotheke,52.495133,13.420429,node/2013009698
+Pharmacy,Oldenburger Apotheke,52.530257,13.335933,node/2110613369
+Pharmacy,Meine Apotheke,52.499693,13.312589,node/2139861333
+Pharmacy,Linden Apotheke,52.506761,13.398262,node/2181178545
+Pharmacy,Moabiter Apotheke,52.524357,13.352241,node/2288127751
+Pharmacy,Apotheke am Wittenbergplatz,52.503559,13.344488,node/2320629344
+Pharmacy,Kreuzberg Apotheke,52.490219,13.387055,node/2496651331
+Pharmacy,Spree-Apotheke,52.525326,13.342,node/2557710789
+Pharmacy,Richthofen-Apotheke,52.483107,13.382636,node/2638963983
+Pharmacy,Apotheke im Bismarck-Karree,52.511709,13.304618,node/2713665583
+Pharmacy,Saint Charles Apotheke,52.498515,13.317788,node/2779341569
+Pharmacy,Apotheke Hackesches Quartier,52.522181,13.402481,node/2796710201
+Pharmacy,Regenbogen Apotheke,52.553793,13.359372,node/2829271312
+Pharmacy,Achat Apotheke,52.534762,13.397779,node/2857712871
+Pharmacy,Apotheke am Viktoria-Luise-Platz,52.495248,13.341068,node/3072343433
+Pharmacy,Apotheke am Hermannplatz,52.487533,13.425615,node/3167654650
+Pharmacy,Eick Apotheke,52.49986,13.424798,node/3216711374
+Pharmacy,Elisabeth Apotheke,52.542687,13.425879,node/3307700070
+Pharmacy,Apotheke Rosenthaler Platz,52.529931,13.401731,node/3310052861
+Pharmacy,Aschenbachs Apotheke,52.519685,13.387448,node/3331787468
+Pharmacy,Apotheke 4.0,52.526505,13.341753,node/3334327193
+Pharmacy,Kolonie-Apotheke,52.557857,13.378723,node/3341588831
+Pharmacy,Nordkreuz Apotheke,52.548374,13.388753,node/3350477701
+Pharmacy,Sky Apotheke Kreuzberg,52.489539,13.388802,node/3353551041
+Pharmacy,Kollwitz-Apotheke,52.53619,13.418233,node/3357535140
+Pharmacy,Krankenhaus-Apotheke,52.543861,13.344667,node/3374665796
+Pharmacy,Sophien-Apotheke,52.53235,13.396846,node/3446123445
+Pharmacy,Apotheke Goltzstraße,52.49392,13.353606,node/3472167668
+Pharmacy,Fontane-Apotheke,52.501577,13.324924,node/3556800140
+Pharmacy,Feurig-Apotheke,52.484362,13.353366,node/3632641123
+Pharmacy,Pommern Apotheke,52.488509,13.358847,node/3632641432
+Pharmacy,Roland Apotheke,52.494791,13.338437,node/3666540067
+Pharmacy,Apotheke in der Metropole,52.500641,13.330649,node/3675973919
+Pharmacy,Apotheke am Zoo,52.504527,13.331718,node/3678881033
+Pharmacy,Greifswalder Apotheke,52.532834,13.428637,node/3727826475
+Pharmacy,Pannier-Apotheke,52.48641,13.429926,node/3775184617
+Pharmacy,Magnus Apotheke,52.498485,13.350848,node/3826013963
+Pharmacy,Quartier Apotheke Nolleturm,52.49935,13.352223,node/3826455882
+Pharmacy,Vida Apotheke,52.500298,13.348973,node/3826455892
+Pharmacy,Humboldt-Apotheke,52.502765,13.366538,node/3834271596
+Pharmacy,St. Annen Apotheke,52.48838,13.349072,node/3844572789
+Pharmacy,Quartier Apotheke Maaßenstraße,52.498601,13.354431,node/3859397154
+Pharmacy,Hermes-Apotheke,52.502798,13.319795,node/3861762721
+Pharmacy,Jasmin Apotheke,52.542755,13.392922,node/3941585864
+Pharmacy,Die Herz Apotheke 12,52.550614,13.385108,node/4197401453
+Pharmacy,Sky Apotheke,52.548723,13.354481,node/4234162689
+Pharmacy,Die Herz Apotheke 32,52.552976,13.380135,node/4436482370
+Pharmacy,Kleo Apotheke,52.552019,13.348789,node/4737978945
+Pharmacy,Apotheke des Westens,52.503555,13.335172,node/5099191724
+Pharmacy,Apotheke am Kurfürstendamm,52.501493,13.320417,node/5136059327
+Pharmacy,Königliche Hof-Apotheke,52.516328,13.309104,node/5181703340
+Pharmacy,Tilia Apotheke,52.560848,13.368828,node/5244950366
+Pharmacy,Zedern-Apotheke,52.485203,13.362709,node/5617991157
+Pharmacy,Schönhauser Apotheke,52.540992,13.413547,node/5777420980
+Pharmacy,Lorbeer-Apotheke,52.53535,13.435528,node/6006371223
+Pharmacy,Pluspunkt Apotheke Potsdamer Platz,52.506848,13.373622,node/6143046477
+Pharmacy,Apotheke im KaDeWe,52.501129,13.340043,node/6254464585
+Pharmacy,Bio 7.0 Apotheke,52.501785,13.322333,node/6308903438
+Pharmacy,Feuerland-Apotheke,52.533959,13.379112,node/6510008627
+Pharmacy,Apotheke im Regierungsviertel,52.512012,13.382585,node/7039246613
+Pharmacy,Unsere Apotheke,52.488175,13.340596,node/7723893754
+Pharmacy,Herzpunkt Apotheke,52.545906,13.428558,node/7822423712
+Pharmacy,Apotheke am Leipziger Platz,52.509992,13.3813,node/7843356143
+Pharmacy,Fürst Bismarck Apotheke,52.499094,13.440407,node/7951875987
+Pharmacy,Rialto,52.548697,13.428675,node/8668129617
+Pharmacy,City Apotheke,52.525689,13.422282,node/10018043153
+Pharmacy,Prager Apotheke,52.49385,13.332655,node/10109657661
+Pharmacy,+1 Apotheke,52.540412,13.39485,node/10658455542
+Pharmacy,easyApotheke am Schoenegarten,52.501074,13.358624,node/11565459167
+Pharmacy,Premium Apotheke,52.549954,13.390255,node/13483929851
+Pharmacy,Palmen-Apotheke,52.499735,13.444874,node/14100866337
+Pharmacy,Lilas Apotheke,52.508883,13.32318,way/32367124
+Pharmacy,Apotheke im Berliner Hauptbahnhof,52.525612,13.369542,way/59806041
+Pharmacy,Bahnhof-Apotheke Friedrichshain,52.509964,13.433837,way/337165575
+Pharmacy,Apotheke im Bahnhof Südkreuz,52.476663,13.364314,way/381240714
+Pharmacy,Arena Apotheke,52.50581,13.447141,way/739645093
+Pharmacy,Alexa Apotheke,52.518942,13.415445,way/1197629859
+Pharmacy,Apotheke im Schultheiss Quartier,52.528122,13.34369,way/1410373889
+Groceries,Netto Marken-Discount,52.509819,13.407373,node/58489979
+Groceries,nah und gut,52.491397,13.322883,node/101003688
+Groceries,Aldi,52.552423,13.348066,node/245261389
+Groceries,Öz-Gida,52.487314,13.357073,node/253999816
+Groceries,REWE,52.527612,13.32916,node/261743904
+Groceries,Edeka Ungefroren,52.513684,13.406009,node/269479009
+Groceries,REWE,52.523423,13.306561,node/273765898
+Groceries,Lidl,52.5021,13.414468,node/283190905
+Groceries,EDEKA Y.Reichelt,52.5208,13.334345,node/283443676
+Groceries,Edeka Wittenbergplatz,52.502604,13.343633,node/286740930
+Groceries,Netto Marken-Discount,52.523919,13.446714,node/297477471
+Groceries,Penny,52.489317,13.345897,node/300818499
+Groceries,REWE City,52.525835,13.446983,node/313144196
+Groceries,EDEKA Martin-Luther-Straße,52.492003,13.344784,node/315801862
+Groceries,Bio Company,52.504724,13.307469,node/317732496
+Groceries,EDEKA Kelz,52.516055,13.440678,node/317991364
+Groceries,REWE,52.530583,13.412154,node/318349843
+Groceries,Lidl,52.52233,13.43518,node/319211583
+Groceries,Lidl,52.534519,13.407998,node/320074857
+Groceries,Bio Company,52.488876,13.394202,node/333460025
+Groceries,Alnatura Super Natur Markt,52.551714,13.413696,node/336608019
+Groceries,REWE,52.531981,13.397084,node/348000444
+Groceries,Edeka Siegler,52.485656,13.356834,node/352905900
+Groceries,Aldi,52.485758,13.357434,node/352905928
+Groceries,Istanbul Supermarkt,52.481825,13.348927,node/359754358
+Groceries,PENNY,52.488846,13.425,node/371151371
+Groceries,EDEKA,52.530125,13.337396,node/371817090
+Groceries,REWE City,52.545371,13.412376,node/373861896
+Groceries,REWE,52.498412,13.442009,node/390502682
+Groceries,Alnatura Super Natur Markt,52.490553,13.434245,node/410135899
+Groceries,nah und gut Bülow,52.542079,13.419803,node/418632158
+Groceries,nah und gut Bülow,52.542668,13.418362,node/418632161
+Groceries,Lidl,52.551138,13.383368,node/419545765
+Groceries,Baraka Supermarkt,52.551395,13.382898,node/419545767
+Groceries,LPG BioMarkt,52.49712,13.424091,node/423485548
+Groceries,Punjab Supermarkt,52.558687,13.374908,node/427043045
+Groceries,PENNY,52.533095,13.345433,node/428142582
+Groceries,Netto Marken-Discount,52.518962,13.409903,node/437190622
+Groceries,Kraut & Rüben,52.500616,13.42314,node/439506670
+Groceries,Brandenburger Landwaren,52.502947,13.413685,node/439771184
+Groceries,PENNY,52.526798,13.331712,node/440805106
+Groceries,EDEKA,52.526075,13.422959,node/448814806
+Groceries,REWE City,52.510546,13.390737,node/460331941
+Groceries,PENNY,52.512509,13.304865,node/469876091
+Groceries,PENNY,52.558563,13.385804,node/473611934
+Groceries,Lidl,52.496827,13.419876,node/475897824
+Groceries,Edeka Focke,52.491771,13.354734,node/482585492
+Groceries,Kaufland,52.547982,13.391616,node/498839307
+Groceries,REWE City,52.49315,13.383019,node/505980713
+Groceries,EDEKA,52.493929,13.383969,node/505996681
+Groceries,Denns BioMarkt,52.532569,13.429371,node/521227908
+Groceries,Bio Company,52.523162,13.404137,node/565649878
+Groceries,Bolu,52.550709,13.38406,node/577383675
+Groceries,Denns BioMarkt,52.531871,13.407625,node/582748267
+Groceries,Aldi,52.485898,13.421328,node/615607311
+Groceries,Lidl,52.509696,13.305995,node/616298762
+Groceries,Lidl,52.505413,13.39308,node/621903300
+Groceries,EDEKA,52.490812,13.33569,node/624360866
+Groceries,Eurogida,52.55014,13.385929,node/626859062
+Groceries,Aldi,52.549529,13.388377,node/646601544
+Groceries,EDEKA,52.503565,13.403649,node/652570198
+Groceries,Nahkauf,52.485471,13.340817,node/672147735
+Groceries,Netto,52.491038,13.317075,node/672732987
+Groceries,Netto Marken-Discount,52.553606,13.360727,node/678968266
+Groceries,Ariston,52.485843,13.338933,node/703802172
+Groceries,Bio Company,52.493375,13.331306,node/704002983
+Groceries,Bolu,52.545392,13.369075,node/707425776
+Groceries,Alezz Market,52.546125,13.369625,node/707425912
+Groceries,Lidl,52.549296,13.369708,node/707456082
+Groceries,EDEKA,52.493546,13.332432,node/709045955
+Groceries,Penny Leibnizstraße,52.509517,13.314615,node/715911599
+Groceries,nah und gut,52.49795,13.335095,node/728689944
+Groceries,Grüner Laden,52.523,13.340015,node/728707803
+Groceries,Tariq Supermarkt,52.551838,13.382004,node/729587081
+Groceries,Spice Junction,52.4955,13.365683,node/730172943
+Groceries,REWE,52.506484,13.373778,node/766602125
+Groceries,EDEKA Siebert,52.489169,13.409196,node/766742192
+Groceries,Denns BioMarkt,52.503956,13.409137,node/769364237
+Groceries,International Supermarket,52.505012,13.407682,node/777083090
+Groceries,PENNY,52.549706,13.368043,node/832835260
+Groceries,Kral Discount,52.552264,13.366584,node/832835278
+Groceries,Kutzner & Kutzner,52.546325,13.413475,node/847029086
+Groceries,Eurogida,52.499293,13.420674,node/848871594
+Groceries,Asia Markt,52.519181,13.414795,node/866236232
+Groceries,PENNY,52.545656,13.429749,node/868336312
+Groceries,REWE,52.545296,13.43009,node/868336319
+Groceries,EDEKA,52.486429,13.421495,node/901799431
+Groceries,Bio Company,52.530176,13.383821,node/910429968
+Groceries,Mein Markt,52.516203,13.446992,node/924072123
+Groceries,Netto Marken-Discount,52.491318,13.417701,node/958150532
+Groceries,Lidl,52.510428,13.395016,node/960127307
+Groceries,Asia-Mekong,52.522055,13.401103,node/975312179
+Groceries,Edeka,52.531999,13.344607,node/988558155
+Groceries,Lidl,52.552556,13.421402,node/989194577
+Groceries,Netto Marken-Discount,52.495444,13.419963,node/1036581040
+Groceries,REWE,52.529564,13.383975,node/1110843201
+Groceries,Denns BioMarkt,52.540742,13.416391,node/1111017123
+Groceries,Netto Marken-Discount,52.54984,13.414376,node/1120057650
+Groceries,Nah und Gut,52.474329,13.371621,node/1149666418
+Groceries,Denns BioMarkt,52.505018,13.323381,node/1187333066
+Groceries,Lidl,52.524443,13.379524,node/1203692599
+Groceries,Phung,52.491355,13.349429,node/1207355255
+Groceries,Mini Spar,52.493705,13.437165,node/1224795204
+Groceries,Denns BioMarkt,52.485736,13.421475,node/1225486132
+Groceries,REWE,52.516601,13.310162,node/1226244579
+Groceries,PENNY,52.550089,13.353309,node/1234547262
+Groceries,Lidl,52.548512,13.413111,node/1252476612
+Groceries,LPG BioMarkt,52.5328,13.413704,node/1256746140
+Groceries,Nazar Market,52.510727,13.305647,node/1282080435
+Groceries,Radhaa,52.487244,13.427558,node/1306177277
+Groceries,City Supermarkt,52.509411,13.391561,node/1312144101
+Groceries,REWE,52.499427,13.418709,node/1336738281
+Groceries,Go Asia,52.521419,13.387769,node/1349696689
+Groceries,Edeka Fromm,52.552667,13.347661,node/1370691440
+Groceries,nahcity Duong,52.536064,13.432403,node/1383599532
+Groceries,Kauf Markt,52.529034,13.395231,node/1389419217
+Groceries,Afghan Zamin Supermarkt,52.482083,13.349152,node/1397070330
+Groceries,Nahkauf,52.497941,13.443885,node/1402023314
+Groceries,EDEKA Kiezmarkt,52.527827,13.391776,node/1415880278
+Groceries,PENNY,52.495147,13.428415,node/1446214034
+Groceries,miniladen,52.548845,13.409211,node/1544191098
+Groceries,REWE,52.549379,13.416179,node/1585630534
+Groceries,HIT,52.511771,13.383911,node/1588155369
+Groceries,Bio Company,52.493504,13.422087,node/1641888176
+Groceries,Go Asia,52.547702,13.357376,node/1659325636
+Groceries,Eurogida,52.548285,13.356333,node/1659884040
+Groceries,Baskent,52.541725,13.349675,node/1699353556
+Groceries,Bio Company,52.544021,13.42657,node/1768055811
+Groceries,Netto City,52.503656,13.348668,node/1773431934
+Groceries,Edeka M. Fiebig,52.491605,13.423276,node/1776155102
+Groceries,Rewe Marcel Weyermann,52.536342,13.436698,node/1778043747
+Groceries,Penny,52.543731,13.426485,node/1794592994
+Groceries,Aldi,52.506541,13.416289,node/1812280451
+Groceries,Denns BioMarkt,52.507649,13.414458,node/1812280461
+Groceries,Go Asia,52.522766,13.412366,node/1816817789
+Groceries,Aldi,52.493648,13.332242,node/1824743955
+Groceries,Asiamarkt,52.501211,13.3916,node/1848217298
+Groceries,Lekr,52.531194,13.433143,node/1863559158
+Groceries,Nah und Gut Fischer,52.485689,13.361758,node/1871927027
+Groceries,Markt U183,52.494528,13.400549,node/1873679231
+Groceries,Lidl,52.500702,13.321367,node/1882245298
+Groceries,Netto City,52.498115,13.318263,node/1906549344
+Groceries,EDEKA Zahl,52.516984,13.30707,node/1915389756
+Groceries,Edeka Henning,52.536279,13.418361,node/1946787755
+Groceries,Denns BioMarkt,52.48851,13.358155,node/1969213798
+Groceries,Lidl,52.500711,13.434735,node/1995012778
+Groceries,Edeka Brehm City,52.494512,13.420825,node/2013009700
+Groceries,PENNY,52.542374,13.393291,node/2026168141
+Groceries,EDEKA Wilmersdorfer Straße,52.509741,13.305296,node/2082343419
+Groceries,Nahkauf,52.491405,13.396714,node/2086361728
+Groceries,REWE,52.538776,13.412769,node/2137158125
+Groceries,Vom Einfachen das Gute,52.499388,13.31243,node/2139861397
+Groceries,Alnatura Super Natur Markt,52.510195,13.408035,node/2179167888
+Groceries,nah und gut,52.495086,13.323548,node/2183538439
+Groceries,REWE voll pflanzlich,52.50771,13.449943,node/2238828808
+Groceries,Mały Książę,52.488041,13.407559,node/2270842497
+Groceries,Eurogida,52.484121,13.385394,node/2280615913
+Groceries,EDEKA Meissner an der Nolle,52.498934,13.354558,node/2286174929
+Groceries,Bolu,52.490426,13.423998,node/2287696877
+Groceries,Alnatura Super Natur Markt,52.502211,13.309167,node/2290106962
+Groceries,Eurogida,52.498942,13.441376,node/2314280248
+Groceries,EDEKA Jost,52.506104,13.320314,node/2347507117
+Groceries,FrischeParadies,52.521642,13.321366,node/2386082873
+Groceries,Netto,52.532141,13.419561,node/2398339919
+Groceries,Denns BioMarkt,52.540264,13.404136,node/2406781814
+Groceries,Alnatura Super Natur Markt,52.489359,13.397766,node/2426050677
+Groceries,Bio Company,52.530737,13.400615,node/2451544042
+Groceries,REWE City,52.522424,13.403453,node/2463153046
+Groceries,Bio Company,52.522907,13.38757,node/2464138931
+Groceries,Bio Company,52.484971,13.353364,node/2472120999
+Groceries,Sengül Market,52.544487,13.36006,node/2482984708
+Groceries,Anatolia,52.545482,13.360241,node/2483572759
+Groceries,Edeka Bergmannstraße,52.489678,13.388421,node/2495554577
+Groceries,Netto Marken-Discount,52.489666,13.388929,node/2495554583
+Groceries,Lidl,52.500453,13.350738,node/2634887168
+Groceries,Vinh-Loi,52.548883,13.353625,node/2748240260
+Groceries,Bahia,52.498937,13.440785,node/2796341489
+Groceries,Biotopia,52.498903,13.440872,node/2796342271
+Groceries,Lidl,52.503844,13.383754,node/2807783135
+Groceries,Doğan Supermarkt,52.527704,13.328312,node/2827585882
+Groceries,PENNY,52.481118,13.350501,node/2835612698
+Groceries,Bio Company,52.487867,13.335442,node/2882702745
+Groceries,Kosherlife Koshere Lebensmittel,52.534858,13.398335,node/2935486802
+Groceries,Kaufland,52.553117,13.346232,node/2966075122
+Groceries,Lidl,52.491769,13.361147,node/3060693588
+Groceries,Eurogida,52.487691,13.331523,node/3079828154
+Groceries,Indomarkt,52.542549,13.369523,node/3081225430
+Groceries,REWE City,52.512517,13.390466,node/3117324769
+Groceries,Norma,52.5276,13.338821,node/3166307701
+Groceries,Örs Market,52.506558,13.389657,node/3216719429
+Groceries,Bio Company,52.548732,13.353885,node/3218143489
+Groceries,Sattva,52.495258,13.43194,node/3256799991
+Groceries,Sila-Markt,52.526784,13.336889,node/3266123514
+Groceries,REWE,52.499251,13.362134,node/3343659747
+Groceries,Bio Company,52.49913,13.324406,node/3354444673
+Groceries,BioInsel,52.485711,13.361029,node/3446653825
+Groceries,Alnatura Super Natur Markt,52.500124,13.354527,node/3472128868
+Groceries,Penny,52.496386,13.347832,node/3488849733
+Groceries,Denns BioMarkt,52.494986,13.420547,node/3499253021
+Groceries,Punjab Foods Afro Shop,52.558259,13.374283,node/3506086153
+Groceries,Schnittstelle,52.489874,13.422358,node/3563938494
+Groceries,Bolu,52.548931,13.355191,node/3577574383
+Groceries,Zora Supermarkt,52.524193,13.333199,node/3629578699
+Groceries,Biolino,52.487967,13.360343,node/3632641114
+Groceries,Go Asia,52.484556,13.35375,node/3632644957
+Groceries,Netto,52.512436,13.433022,node/3644425794
+Groceries,Netto Marken-Discount,52.496021,13.345819,node/3666631698
+Groceries,HIT,52.513523,13.304776,node/3686065800
+Groceries,Nazar Supermarkt,52.499458,13.363091,node/3712221852
+Groceries,Mitte Meer,52.484833,13.369301,node/3779407694
+Groceries,Bolu,52.500383,13.348406,node/3826451055
+Groceries,Denns BioMarkt,52.498018,13.348376,node/3826451957
+Groceries,Bio Company,52.488475,13.415093,node/3851784124
+Groceries,Eurogida,52.496779,13.361189,node/3855567148
+Groceries,Baraka Supermarkt,52.485251,13.355038,node/3858762686
+Groceries,Go Asia,52.498693,13.354422,node/3859397150
+Groceries,EDEKA,52.500514,13.322218,node/3862782311
+Groceries,Bio Company,52.532046,13.427761,node/3898818522
+Groceries,Denns BioMarkt,52.54868,13.38914,node/3906099257
+Groceries,Aldi,52.510168,13.380844,node/3987047649
+Groceries,Edeka,52.519789,13.450354,node/3989777458
+Groceries,REWE,52.485647,13.356178,node/4017367047
+Groceries,Norma,52.499004,13.416367,node/4034592725
+Groceries,Alnatura Super Natur Markt,52.511071,13.389311,node/4068008871
+Groceries,Alnatura Super Natur Markt,52.528433,13.38599,node/4068008872
+Groceries,Denns BioMarkt,52.539098,13.425455,node/4090281105
+Groceries,Atix,52.522607,13.401048,node/4119293448
+Groceries,Netto Marken-Discount,52.525078,13.415307,node/4179406780
+Groceries,Lidl,52.546413,13.359924,node/4224268256
+Groceries,Penny Underground,52.546001,13.359364,node/4234162693
+Groceries,nahcity,52.527809,13.402663,node/4244204867
+Groceries,Bio Company,52.547714,13.412047,node/4314333203
+Groceries,Safrani,52.510342,13.305347,node/4415604082
+Groceries,Calvin Discount,52.524014,13.352052,node/4419487707
+Groceries,SuperCoop,52.549648,13.354171,node/4454085334
+Groceries,AZZAM,52.527456,13.329965,node/4454150182
+Groceries,Kaufland,52.522419,13.407589,node/4546753612
+Groceries,Netto Marken-Discount,52.508402,13.305522,node/4547088787
+Groceries,REWE City,52.511536,13.30959,node/4675037065
+Groceries,Al Madina,52.487127,13.426768,node/4693291602
+Groceries,Alnatura Super Natur Markt,52.526766,13.332649,node/4761858224
+Groceries,Rewe,52.533286,13.43436,node/4778473121
+Groceries,Lidl,52.536295,13.42293,node/4787095825
+Groceries,Reformhaus Bagheri,52.51584,13.304849,node/4809139807
+Groceries,Edeka Sapphire,52.534251,13.378755,node/4892038733
+Groceries,Tugra Gida,52.488005,13.357716,node/4944997005
+Groceries,Alnatura Super Natur Markt,52.498704,13.312117,node/4995415654
+Groceries,El-Fi Supermarkt,52.495404,13.420137,node/5034396389
+Groceries,Aldi,52.49402,13.360639,node/5211079183
+Groceries,Aldi,52.52188,13.423237,node/5224864431
+Groceries,EDEKA,52.495229,13.341635,node/5426133815
+Groceries,Bio Company,52.506734,13.394112,node/5545056560
+Groceries,Europa Markt,52.499685,13.334699,node/5562843821
+Groceries,Vinh-Loi Asien-Supermarkt,52.503302,13.342453,node/5578988343
+Groceries,Netto,52.547857,13.430262,node/5618092635
+Groceries,Go Asia,52.526551,13.341696,node/5785097564
+Groceries,El-Fi Supermarket,52.552783,13.382373,node/5887756717
+Groceries,LPG BioMarkt,52.492537,13.378776,node/5891717533
+Groceries,Netto Marken-Discount,52.55476,13.411353,node/5943512628
+Groceries,REWE,52.491532,13.371292,node/5986842514
+Groceries,Go Asia,52.509642,13.377179,node/6030378239
+Groceries,Aldi,52.50641,13.445887,node/6032523127
+Groceries,Bio Company,52.500241,13.440971,node/6069060641
+Groceries,AES Shop,52.534506,13.425688,node/6088939377
+Groceries,Denns BioMarkt,52.548499,13.355885,node/6131114962
+Groceries,REWE,52.548801,13.353739,node/6146723586
+Groceries,Die Erbsenzählerei - Gutes unverpackt,52.48561,13.362976,node/6192424377
+Groceries,Denns BioMarkt,52.549291,13.415798,node/6258659482
+Groceries,Denns BioMarkt,52.520817,13.413918,node/6273394390
+Groceries,EDEKA Treugut,52.491856,13.432613,node/6405908039
+Groceries,Mitte Meer,52.506538,13.312701,node/6418619229
+Groceries,Habibi,52.532841,13.350594,node/6508696685
+Groceries,Go Asia,52.503609,13.335259,node/6535253437
+Groceries,EDEKA,52.532013,13.407849,node/6595730361
+Groceries,Dadly,52.53345,13.328036,node/6635160123
+Groceries,Netto Marken-Discount,52.502113,13.358411,node/6754031358
+Groceries,Elmas,52.552299,13.348289,node/6766866985
+Groceries,EDEKA,52.527328,13.372971,node/6808350137
+Groceries,Al Schark,52.530249,13.328276,node/7127961262
+Groceries,Kartar Food,52.51747,13.304337,node/7200854537
+Groceries,Centro Italia,52.539138,13.438679,node/7249782646
+Groceries,Bento & Bibim,52.54112,13.414417,node/7287775932
+Groceries,EDEKA,52.502347,13.385547,node/7658861472
+Groceries,Lidl,52.477139,13.341752,node/7734882729
+Groceries,LPG Naturkost,52.484969,13.329404,node/7821177801
+Groceries,Go Asia,52.503622,13.332831,node/7922093272
+Groceries,Aldi,52.512128,13.304891,node/7946062409
+Groceries,REWE,52.547576,13.419098,node/8278396118
+Groceries,REWE,52.532281,13.366039,node/8367158861
+Groceries,REWE,52.50082,13.324757,node/8376407522
+Groceries,Denns BioMarkt,52.532908,13.387756,node/8573099104
+Groceries,Denns BioMarkt,52.485386,13.354215,node/8637878902
+Groceries,EDEKA Fromm,52.542859,13.365894,node/8693899527
+Groceries,Kosher Daily Markt,52.49716,13.311877,node/8919248466
+Groceries,Zora Supermarket,52.49362,13.421974,node/8960303401
+Groceries,Edeka,52.524363,13.403102,node/9045204695
+Groceries,Alnatura Super Natur Markt,52.512629,13.434173,node/9123971589
+Groceries,Edeka Schaaf,52.517472,13.420669,node/9154787137
+Groceries,REWE,52.500996,13.358825,node/9167471817
+Groceries,Cocos Asia,52.493322,13.384023,node/9350697582
+Groceries,Denns BioMarkt,52.490466,13.386207,node/9492707050
+Groceries,EDEKA Meissner,52.511823,13.314319,node/9561434407
+Groceries,Asia-Markt,52.51256,13.305283,node/9794360171
+Groceries,Aldi,52.518874,13.387958,node/9798282713
+Groceries,Edeka,52.475948,13.362562,node/9881679117
+Groceries,Edeka Marienburger Straße,52.533993,13.426182,node/10035991556
+Groceries,Edeka Treugut,52.497938,13.3631,node/10113359153
+Groceries,NHI Global Food Market,52.533025,13.367441,node/10159681696
+Groceries,EDEKA,52.537532,13.405478,node/10279617097
+Groceries,Netto Marken-Discount,52.525365,13.341872,node/10562009263
+Groceries,REWE,52.549447,13.377706,node/10873128906
+Groceries,Makka,52.530153,13.345543,node/10928623111
+Groceries,REWE,52.525327,13.38928,node/11027556740
+Groceries,Bio Company,52.510613,13.416412,node/11078794332
+Groceries,EDEKA Zahl,52.520163,13.319847,node/11134671308
+Groceries,EDEKA Skalitzer Straße,52.499345,13.422201,node/11504226612
+Groceries,Denns BioMarkt,52.526498,13.342136,node/12201930620
+Groceries,Rewe,52.499831,13.384572,node/12299947274
+Groceries,Lidl,52.50372,13.333125,node/12437309605
+Groceries,Galeria Markthalle,52.487237,13.423802,node/12475543329
+Groceries,EDEKA Kelz,52.514202,13.437926,node/12568075035
+Groceries,Baraka Supermarkt,52.553246,13.347519,node/12830935662
+Groceries,Lidl,52.486936,13.42391,node/12843181844
+Groceries,EDEKA,52.531201,13.361904,node/12956133299
+Groceries,REWE,52.50641,13.307091,node/13141866731
+Groceries,Rewe,52.52715,13.333042,node/13336072227
+Groceries,Başkent,52.500779,13.391824,node/13365845905
+Groceries,24/7 shop,52.505902,13.437471,node/13942535985
+Groceries,Baraka,52.485935,13.431207,node/14018064293
+Groceries,Hanguk Markt,52.525083,13.306361,node/14089675880
+Groceries,Rewe,52.510685,13.380889,node/14188897492
+Groceries,REWE,52.550768,13.410033,node/14237900559
+Groceries,Masala Hof,52.529165,13.445204,node/14312522590
+Groceries,Lidl,52.535823,13.3527,relation/15762589
+Groceries,EDEKA,52.522625,13.428412,way/24035130
+Groceries,Lidl,52.506601,13.412529,way/24621075
+Groceries,Lidl,52.486819,13.324912,way/24862235
+Groceries,Edeka Berliner Straße,52.487026,13.32554,way/24862236
+Groceries,Netto Marken-Discount,52.543894,13.370915,way/24964657
+Groceries,Netto Marken-Discount,52.510466,13.437707,way/25649356
+Groceries,Rewe,52.518826,13.342217,way/25779478
+Groceries,EDEKA Schnelle,52.514871,13.431261,way/26222734
+Groceries,Aldi,52.490208,13.374994,way/26476469
+Groceries,Netto,52.54266,13.367688,way/27162702
+Groceries,Penny,52.480893,13.384898,way/27579008
+Groceries,Lidl,52.555162,13.382466,way/27849630
+Groceries,Aldi,52.511087,13.445551,way/28235301
+Groceries,Kaufland,52.55898,13.373609,way/28704816
+Groceries,Netto Marken-Discount,52.523512,13.426567,way/29055745
+Groceries,Netto Marken-Discount,52.516791,13.420296,way/29386143
+Groceries,Aldi,52.541297,13.43727,way/31798400
+Groceries,LPG BioMarkt,52.495875,13.388586,way/36908960
+Groceries,Lidl,52.485324,13.37231,way/37179452
+Groceries,Netto Marken-Discount,52.526744,13.307653,way/37414293
+Groceries,Lidl,52.527712,13.307581,way/37756363
+Groceries,Inter Gida - İstanbul Supermarkt,52.499227,13.417035,way/37853306
+Groceries,Aldi,52.548951,13.401633,way/40071062
+Groceries,Edeka Stepaniak,52.488167,13.334702,way/42347083
+Groceries,Edeka,52.541569,13.355594,way/43364093
+Groceries,Lidl,52.489846,13.374865,way/43945102
+Groceries,Aldi,52.538926,13.327081,way/48373221
+Groceries,REWE,52.483696,13.377497,way/48926011
+Groceries,Edeka,52.519039,13.309509,way/50242456
+Groceries,Lidl,52.54649,13.429564,way/51039585
+Groceries,EDEKA,52.507771,13.415484,way/52092588
+Groceries,Netto Marken-Discount,52.532324,13.36002,way/53190801
+Groceries,PENNY Humboldthain,52.542987,13.378265,way/53542190
+Groceries,Netto Marken-Discount,52.49866,13.405858,way/93729107
+Groceries,HIT Ullrich,52.506012,13.331031,way/96837216
+Groceries,Lidl,52.552463,13.350095,way/100574668
+Groceries,PENNY,52.523805,13.35845,way/104781628
+Groceries,Lidl,52.492151,13.431132,way/104842459
+Groceries,Lidl,52.544503,13.3917,way/105805611
+Groceries,Eurogida,52.527019,13.334795,way/117162664
+Groceries,Bio Company,52.527004,13.335105,way/117162669
+Groceries,Bolu,52.527075,13.335746,way/117162764
+Groceries,Netto,52.548476,13.419691,way/127553509
+Groceries,Aldi,52.524104,13.364123,way/142947685
+Groceries,Lidl,52.482725,13.350823,way/146694658
+Groceries,Mini Markt,52.544517,13.432626,way/289314862
+Groceries,Aldi,52.528086,13.317724,way/311233487
+Groceries,EDEKA,52.520137,13.387019,way/335576636
+Groceries,EDEKA,52.476399,13.364625,way/381240724
+Groceries,REWE,52.509652,13.43514,way/381418960
+Groceries,PENNY,52.509916,13.434263,way/401040578
+Groceries,Denns BioMarkt,52.52547,13.369855,way/402792868
+Groceries,REWE City,52.524073,13.36957,way/407270362
+Groceries,Rewe To Go,52.525234,13.369846,way/407684446
+Groceries,Bio Company,52.492994,13.371615,way/489210954
+Groceries,Lidl,52.554026,13.401005,way/634957895
+Groceries,REWE,52.50604,13.447638,way/739645090
+Groceries,Denns BioMarkt,52.507617,13.332816,way/1047617432
+Groceries,EDEKA,52.518553,13.416777,way/1204762785
+Groceries,REWE Center,52.549841,13.390855,way/1266882969
+Groceries,Kaufland,52.528478,13.343894,way/1410376784
+Groceries,LPG BioMarkt,52.523622,13.346141,way/1413026953
+Groceries,LEDO,52.494264,13.363268,way/1429504461
+Groceries,Aldi,52.54263,13.378511,way/1530016350

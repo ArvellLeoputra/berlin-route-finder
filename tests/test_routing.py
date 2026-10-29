@@ -1,19 +1,7 @@
 import osmnx as ox
 import pytest
 
-from src.routing import build_index, find_route, nearest_node
-
-# Load each graph once and share it between all tests
-@pytest.fixture(scope="module")
-def walk():
-    G = ox.load_graphml("data/walk.graphml.gz")
-    return G, build_index(G)
-
-
-@pytest.fixture(scope="module")
-def bike():
-    G = ox.load_graphml("data/bike.graphml.gz")
-    return G, build_index(G)
+from src.routing import find_route, nearest_node
 
 
 # Test 1: the three benchmark routes give their known walking distances (in meters)
