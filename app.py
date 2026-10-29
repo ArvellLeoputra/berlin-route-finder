@@ -4,6 +4,7 @@ import osmnx as ox#
 from streamlit_folium import st_folium
 
 from src.config import CENTER, RADIUS
+from src.planner import load_shops, plan_trip
 from src.routing import find_route, make_map, build_index
 
 # Caching to avoid repeated geocoding
@@ -39,6 +40,12 @@ def load_index(mode):
     return build_index(load_saved_graph(mode))
 
 
+# Shops for the errand planner, read once
+@st.cache_resource(show_spinner=False)
+def load_saved_shops():
+    return load_shops()
+
+
 st.title("Berlin Route Finder")
 st.caption("Covers central Berlin, within 5 km of Brandenburger Tor.")
 
@@ -54,9 +61,11 @@ modes = {"Walk": ("walk", 5), "Bike": ("bike", 15)}
 mode_label = st.radio("Mode", list(modes), horizontal=True)
 mode, speed = modes[mode_label]
 
+errands = st.multiselect("Errands on the way (optional)", ["Post office", "Pharmacy", "Groceries"])
+
 if st.button("Find route"):
     # start fresh, so a failed search doesn't bring back an old route
-    for key in ["map", "distance", "speed", "query"]:
+    for key in ["map", "distance", "speed", "query", "stops"]:
         st.session_state.pop(key, None)
 
     if not start_name or not end_name:
@@ -69,16 +78,23 @@ if st.button("Find route"):
     with st.spinner("Loading streets..."):
         G = load_saved_graph(mode)
         index = load_index(mode)
-    route, distance = find_route(G, start, end, index=index, algorithm="astar")
+
+    if errands:
+        with st.spinner("Planning your errands..."):
+            stops, distance, route = plan_trip(G, index, start, end, load_saved_shops(), errands)
+    else:
+        stops = []
+        route, distance = find_route(G, start, end, index=index, algorithm="astar")
 
     # Keep the route between reruns, otherwise the map flashes and disappears
-    st.session_state["map"] = make_map(G, route, distance, start_name, end_name)
+    st.session_state["map"] = make_map(G, route, distance, start_name, end_name, stops=stops)
     st.session_state["distance"] = distance
     st.session_state["speed"] = speed
-    st.session_state["query"] = (start_name, end_name, mode_label)
+    st.session_state["stops"] = stops
+    st.session_state["query"] = (start_name, end_name, mode_label, tuple(errands))
 
 if "map" in st.session_state:
-    if st.session_state["query"] != (start_name, end_name, mode_label):
+    if st.session_state["query"] != (start_name, end_name, mode_label, tuple(errands)):
         st.info("You changed the inputs. Click **Find route** to update.")
 
     distance = st.session_state["distance"]
@@ -93,7 +109,11 @@ if "map" in st.session_state:
     col1.metric("Distance", dist_text)
     col2.metric("Time", time_text)
 
-    s, e, m_label = st.session_state["query"]
+    s, e, m_label, _ = st.session_state["query"]
     st.caption(f"{m_label} route from {s} to {e}")
+
+    # The errand stops
+    for number, stop in enumerate(st.session_state["stops"], start=1):
+          st.markdown(f"**{number}.** {stop.kind}: {stop.name or '(no name)'}")
 
     st_folium(st.session_state["map"], width=700, height=500, returned_objects=[])

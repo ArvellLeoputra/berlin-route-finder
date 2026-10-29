@@ -75,8 +75,10 @@ def find_route(G, start, end, index=None, algorithm="bidirectional"):
 
     return route, distance
 
+STOP_COLORS = {"Post office": "#2f6feb", "Pharmacy": "#0f9d78", "Groceries": "#ef5350"}
 
-def make_map(G, route, distance, start_name, end_name):
+
+def make_map(G, route, distance, start_name, end_name, stops=None):
     coords = []
     for node_id in route:
         node = G.nodes[node_id]
@@ -103,6 +105,22 @@ def make_map(G, route, distance, start_name, end_name):
         icon=folium.Icon(color="red"),
         tooltip="End",
     ).add_to(m)
+
+    # Errand stops: numbered circles in visiting order
+    for number, stop in enumerate(stops or [], start=1):
+        color = STOP_COLORS.get(stop.kind, "gray")
+        folium.Marker(
+            location=(stop.lat, stop.lon),
+            tooltip=f"{number}. {stop.kind}: {stop.name or 'no name'}",
+            icon=folium.DivIcon(
+                html=(f'<div style="background:{color};color:white;border:2px solid white;'
+                      f'border-radius:50%;width:26px;height:26px;line-height:22px;'
+                      f'text-align:center;font-weight:bold;font-family:sans-serif;'
+                      f'box-shadow:0 1px 3px rgba(0,0,0,0.4)">{number}</div>'),
+                icon_size=(26, 26),
+                icon_anchor=(13, 13),
+            ),
+        ).add_to(m)
 
     m.fit_bounds(coords)
     return m
