@@ -1,7 +1,9 @@
 import networkx as nx
 import pytest
+import itertools
+import random
 
-from src.planner import Shop, load_shops, plan_trip
+from src.planner import Shop, load_shops, plan_trip, best_trip
 from src.routing import find_route
 
 UNI = (52.5125, 13.3269)    # TU Berlin
@@ -52,3 +54,24 @@ def test_no_errands(walk):
     _, direct = find_route(G, UNI, HOME, index=index, algorithm="astar")
     assert stops == []
     assert distance == pytest.approx(direct)
+
+
+# Test 5: dynamic programming finds the same best trip as trying every trip
+def test_best_trip_matches_brute_force():
+    random.seed(1)
+    for _ in range(100):
+        n, k = random.randint(0, 4), random.randint(1, 3)
+        groups = [[f"{i}-{s}" for s in range(k)] for i in range(n)]
+        table = {}
+
+        def dist(a, b):
+            if (a, b) not in table:
+                table[a, b] = random.uniform(100, 3000)
+            return table[a, b]
+
+        brute = min(sum(dist(a, b) for a, b in zip(trip, trip[1:]))
+                    for choice in itertools.product(*groups)
+                    for order in itertools.permutations(choice)
+                    for trip in [["start", *order, "end"]])
+        _, d = best_trip("start", "end", groups, dist)
+        assert d == pytest.approx(brute)
