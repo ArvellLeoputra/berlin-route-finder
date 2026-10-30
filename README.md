@@ -2,7 +2,7 @@
 
 ![Tests](https://github.com/ArvellLeoputra/berlin-route-finder/actions/workflows/tests.yml/badge.svg)
 
-On my way home from uni, I usually have a few things to do: drop off a parcel, grab something from the pharmacy, buy groceries. Google Maps can do it, but I have to pick which post office, which pharmacy and which supermarket myself, one by one. So I want to build an app that just figures it out: tell it where I start, where I’m going, and what I need, and it finds the shortest way through everything.
+On my way home from uni, I usually have a few things to do: drop off a parcel, grab something from the pharmacy, buy groceries. Google Maps can do it, but I have to pick which post office, which pharmacy and which supermarket myself, one by one. So I built an app that just figures it out: tell it where I start, where I'm going, and what I need, and it finds the shortest way through everything.
 
 ![Idea sketch of the errand planner](images/idea-sketch.png)
 
@@ -14,17 +14,44 @@ Picking the nearest shop each time feels like the obvious move. But the nearest 
 
 Same shops, same start and end: 10.4 km if I always take the nearest one, 8.7 km for the best combination.
 
-How many trips are there? Pick one of 3 post offices, 3 pharmacies and 3 supermarkets, then visit them in any of 6 orders: 162 trips. Fine for a computer. With 5 errands and 5 branches each, it’s already 375,000, and that’s where it becomes a real optimization problem.
+How many trips are there? Pick one of 3 post offices, 3 pharmacies and 3 supermarkets, then visit them in any of 6 orders: 162 trips. Fine for a computer. With 5 errands and 5 branches each, it's already 375,000, and that's where it becomes a real optimization problem. In research, this is known as the [Trip Planning Query](https://doi.org/10.1007/11535331_16).
 
-## What's built so far
-
-This repo is the first building block: fast shortest walking and cycling routes on Berlin's real street network. My first version took over a minute per search. Now it takes milliseconds.
+## What it does
 
 **Live:** https://berlin-route-finder.streamlit.app
 
+Enter a start and a destination, pick walking or cycling, and optionally add errands: post office, pharmacy, groceries, bakery, ATM, drugstore. The app picks one real shop of each kind and the order to visit them, and shows the trip on the map with numbered stops.
+
 ![Screenshot](images/dashboard.png)
 
-## How it got faster
+It's built in two layers:
+
+1. **Fast routing** between two points on Berlin's real street network. My first version took over a minute per search. Now it takes milliseconds.
+
+2. **The errand planner** on top, which uses that routing to compare many possible trips.
+
+## How the planner works
+
+Berlin has a lot of shops: in the covered area there are 63 post offices, 201 pharmacies, 398 supermarkets, 493 bakeries, 572 ATMs and 93 drugstores. Trying every combination is impossible (for 3 errands alone, about 30 million trips), so the planner works in two steps.
+
+1. **Shortlist.** For each kind, keep the 5 shops with the smallest detour in straight lines (start → shop → end). This only needs arithmetic, no routing. Then compute real walking routes only between the start, the end and the shortlisted shops, each pair once.
+
+2. **Dynamic programming.** Instead of building every full trip, build trips one stop at a time and keep only the shortest way to each state: which kinds are visited, and which shop I'm standing at. For example, `Uni → P1 → Ph1` and `Uni → P2 → Ph1` both end at the pharmacy with the post office done. Whatever comes next is the same for both, so only the shorter one is kept and continued. This is the Held–Karp idea from the travelling salesman problem.
+
+With 6 errands and 5 shops each, that's about 2,000 states instead of 11 million trips, and the search itself runs in milliseconds. Almost all of the planning time goes into the walking routes between the shortlisted places.
+
+The shortlist is a heuristic: a shop that looks like a detour in a straight line can still have a direct street, so a small shortlist can miss the best trip. A bigger shortlist is safer but slower:
+
+| Shortlist per kind | Possible trips | Best trip found | Time |
+|---|---|---|---|
+| 3 | 162 | 6.85 km | 0.42 s |
+| 5 | 750 | 6.67 km | 1.24 s |
+| 8 | 3,072 | 6.67 km | 2.92 s |
+| 10 | 6,000 | 6.64 km | 5.45 s |
+
+TU Berlin → Alexanderplatz with a post office, a pharmacy and groceries, walking, on a MacBook Pro (M1 Pro), `benchmarks/benchmark_planner.py`. Going straight home is about 6.2 km, so with the right shops the three errands only add about 400 m. The app uses 5 shops per kind.
+
+## How the routing got faster
 
 | Version | What changed | Why |
 |---|---|---|
@@ -36,7 +63,7 @@ This repo is the first building block: fast shortest walking and cycling routes 
 | Single search | Took the route and its length from one bidirectional search instead of two | The length came from a second, one-directional Dijkstra search; now both come from the search that finds the route |
 | A* search | Replaced the bidirectional search with A*, which uses the straight-line distance to the destination as a guide | Checks fewer intersections, and since the guide never overestimates, the routes stay the same (2.4–3.5× faster) |
 
-## Results
+## Routing results
 
 | Route | Distance | Live download (first version) | Now | Speedup |
 |---|---|---|---|---|
@@ -68,14 +95,19 @@ The same 200 random routes, each timed best of 3, with and without the index (`b
 
 ## Tests
 
-Run `pytest` to run 9 tests. They check known walking and biking distances, that the fast nearest-intersection index gives the same result as OSMnx, and that A* finds the same distances as the bidirectional search.
+Run `pytest` to run 14 tests:
+- **Routing:** known walking and biking distances, the fast nearest-intersection index gives the same result as OSMnx, and A* finds the same distances as the bidirectional search.
+- **Planner:** the shop data loads, the planner finds the 8.7 km trip from the figure above, every trip visits each kind once and its route really has the reported length, and the dynamic programming search gives the same result as trying every trip.
+
 
 ## How it works
 
 - **Graph:** OSMnx turns OpenStreetMap data into a directed graph. The walk network has 90,663 intersections, the bike network 37,980.
+- **Shops:** downloaded once from OpenStreetMap and saved in `data/shops.csv` (1,820 shops), so the app needs no internet for them.
 - **Geocoding:** place names are resolved with Nominatim and checked against the covered area.
 - **Routing:** start and end snap to the nearest intersection using a BallTree built once at startup, then an A* search in NetworkX, guided by the straight-line distance to the destination, finds the shortest path, weighted by street length.
-- **App:** Streamlit, with the graphs and indexes loaded at startup and the route kept in session state so it survives Streamlit's reruns.
+- **Planner:** shortlist per kind, walking routes between the shortlisted places (each pair computed once), then dynamic programming over "kinds visited + current shop".
+- **App:** Streamlit, with the graphs, indexes and shops loaded at startup and the route kept in session state so it survives Streamlit's reruns.
 
 ## Project structure
 
@@ -83,26 +115,30 @@ Run `pytest` to run 9 tests. They check known walking and biking distances, that
 app.py                 Streamlit app (entry point)
 src/
   routing.py           graph helpers, nearest-intersection index, routing, map
+  planner.py           errand planner: shortlist and dynamic programming
   config.py            covered area (center and radius)
   build_graph.py       downloads and saves the street graphs
+  build_shops.py       downloads and saves the shops
 benchmarks/            timing scripts
 tests/                 pytest tests
-data/                  preloaded street graphs (.graphml.gz)
-images/                screenshot, idea sketches and benchmark chart
+data/                  street graphs (.graphml.gz) and shops (shops.csv)
+images/                screenshots, figures and benchmark chart
 ```
 
 ## Limitations
 
 - Only covers places within 5 km of Brandenburger Tor.
 - Travel time uses average speeds (5 km/h walking, 15 km/h cycling).
+- The shortlist can miss the best shop, so the planner finds a very good trip, not always the best one.
+- Shops come from OpenStreetMap: some have no name, opening hours are ignored, and "post office" includes the small Deutsche Post / DHL partner shops in kiosks.
 - Snapping to the nearest intersection isn't always optimal: a slightly farther entry point can give a shorter total route.
 - The live app runs on a free server, so its startup is likely slower than the laptop numbers above, and it goes to sleep when nobody uses it for a while.
 
 ## What's next
 
-The goal is the errand planner from the top. It needs two more things: the locations of the shops (from OpenStreetMap), and a way to choose which branch of each kind to visit and in what order. I built the fast routing first, because the planner has to compare many possible routes.
-
-Smaller ideas: smarter snapping that considers several nearby intersections, not just the closest one.
+- An exact planner that searches the whole street map without a shortlist, so it always finds the best trip. Then I can measure how often the shortlist misses it, and by how much.
+- Order rules, like "groceries last", so I don't carry shopping bags around.
+- Opening hours, to skip shops that are closed.
 
 ## Run locally
 
@@ -115,7 +151,9 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-To rebuild the street graphs: `python -m src.build_graph`.
+To download the data again (needs internet): 
+- `python -m src.build_graph` for the street graphs
+- `python -m src.build_shops` for the shops.
 
 To reproduce the timings:
 
@@ -123,9 +161,10 @@ To reproduce the timings:
 - `python -m benchmarks.benchmark_live`: the first version (needs internet)
 - `python -m benchmarks.benchmark_scaling`: the 200-route chart
 - `python -m benchmarks.benchmark_astar`: A* vs bidirectional search
+- `python -m benchmarks.benchmark_planner`: planner with different shortlist sizes
 
 To run the tests: `pytest`
 
 ## Data
 
-Street data © OpenStreetMap contributors, available under the Open Database License.
+Street and shop data © OpenStreetMap contributors, available under the Open Database License.

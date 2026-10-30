@@ -59,21 +59,6 @@ def plan_trip(G, index, start, end, shops, kinds, k=5):
                 legs[a, b] = (None, float("inf"))
         return legs[(a, b)]
 
-    # best_stops, best_distance = None, float("inf")
-
-    # # Try every combination of shops
-    # for choice in itertools.product(*candidates):
-    #     # Try every order of visiting them
-    #     for order in itertools.permutations(choice):
-    #         trip = [start, *order, end]
-    #         distance = sum(leg(a, b)[1] for a, b in zip(trip, trip[1:]))
-
-    #         if distance < best_distance:
-    #             best_stops, best_distance = list(order), distance
-
-    # if best_stops is None:
-    #     raise nx.NetworkXNoPath("No route found")
-
     best_stops, best_distance = best_trip(start, end, candidates, lambda a, b: leg(a, b)[1])
 
     # Join the legs of the best trip into one route for the map
@@ -87,40 +72,52 @@ def plan_trip(G, index, start, end, shops, kinds, k=5):
 
  
 def best_trip(start, end, candidates, dist):
+    """
+    Shortest trip from start to end visiting one shop of each kind (dynamic programming).
+    """
     if not candidates:
         return [], dist(start, end)
 
     all_kinds = frozenset(range(len(candidates)))
 
-    # Key = situation: (visited, shop)
-    best = {}  # shortest distance from start for each situation, e.g. best[({0, 1}, P1)] = 1400
-    prev = {}  # the situation before it, to rebuild the trip at the end
+    # Key = state: (visited, shop)
+    best = {}  # shortest distance from start for each state, e.g. best[({0, 1}, P1)] = 1400
+    prev = {}  # the state before it, to rebuild the trip at the end
 
     # First stop: walk from start to any shop
     for kind, group in enumerate(candidates):
         for shop in group:
-            situation = (frozenset([kind]), shop)
-            best[situation] = dist(start, shop)
-            prev[situation] = None
+            visited = frozenset([kind])
+            state = (visited, shop)
+            best[state] = dist(start, shop)
+            prev[state] = None
 
-    # Add one stop at a time: first all situations with 1 kind visited, then 2, ...
+    # Add one stop at a time: first all states with 1 kind visited, then 2, ...
     for size in range(1, len(candidates)):
-        for (visited, shop), d in list(best.items()):
+        for (visited, shop), curr_dist in list(best.items()):
             if len(visited) != size:
                 continue
             for kind, group in enumerate(candidates):
                 if kind in visited:
                     continue  # this kind is already done
-                for next in group:
-                    new = (visited | {kind}, next)
-                    new_d = d + dist(shop, next)
-                    if new_d < best.get(new, float("inf")):
-                        best[new] = new_d
+                for next_shop in group:
+                    new = (visited | {kind}, next_shop)
+                    new_dist = curr_dist + dist(shop, next_shop)
+                    if new_dist < best.get(new, float("inf")):
+                        best[new] = new_dist
                         prev[new] = (visited, shop)
 
     # Last step: every kind visited, walk to the end, take the shortest
-    total, last = min((d + dist(shop, end), (visited, shop))
-                      for (visited, shop), d in best.items() if visited == all_kinds)
+    total, last = float("inf"), None
+    for (visited, shop), curr_dist in best.items():
+        if visited != all_kinds:
+            continue  # not finished yet
+        trip_length = curr_dist + dist(shop, end)
+        if trip_length < total:
+            total, last = trip_length, (visited, shop)
+
+    if last is None:
+        return None, total
 
     # Walk back through prev to get the stops in order
     stops = []
