@@ -6,6 +6,7 @@ from streamlit_folium import st_folium
 from src.config import CENTER, RADIUS
 from src.planner import load_shops, plan_trip
 from src.routing import find_route, make_map, build_index
+from src.exact import plan_trip_exact
 
 # Caching to avoid repeated geocoding
 @st.cache_data(show_spinner=False)
@@ -81,7 +82,7 @@ if st.button("Find route"):
 
     if errands:
         with st.spinner("Planning your errands..."):
-            stops, distance, route = plan_trip(G, index, start, end, load_saved_shops(), errands)
+            stops, distance, route = plan_trip_exact(G, index, start, end, load_saved_shops(), errands)
     else:
         stops = []
         route, distance = find_route(G, start, end, index=index, algorithm="astar")

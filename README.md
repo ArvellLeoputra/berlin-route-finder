@@ -63,13 +63,13 @@ benchmarks/            timing scripts and the errands chart
 tests/                 pytest tests
 data/                  street graphs (.graphml.gz) and shops (shops.csv)
 images/                screenshots, figures and charts
-docs/                  this file
+docs/                  detailed benchmarks
 ```
 
 ## Limitations and next steps
 
 - It covers 5 km around Brandenburger Tor, and travel time uses average speeds.
-- The shortlist can miss the best shop.Next: an exact planner without a shortlist, to measure how often that happens.
+- The shortlist can miss the best shop. Next: an exact planner without a shortlist, to measure how often that happens.
 - Shop data comes from OpenStreetMap, so some shops have no name and opening hours are ignored. Next: skip closed shops, and order rules like "groceries last".
 
 ## Data

@@ -81,8 +81,8 @@ def best_trip(start, end, candidates, dist):
     all_kinds = frozenset(range(len(candidates)))
 
     # Key = state: (visited, shop)
-    best = {}  # shortest distance from start for each state, e.g. best[({0, 1}, P1)] = 1400
-    prev = {}  # the state before it, to rebuild the trip at the end
+    best = {}  # state -> shortest distance from start for each state, e.g. best[({0, 1}, P1)] = 1400
+    prev = {}  # state -> prev_state, to rebuild the trip at the end
 
     # First stop: walk from start to any shop
     for kind, group in enumerate(candidates):
@@ -101,11 +101,11 @@ def best_trip(start, end, candidates, dist):
                 if kind in visited:
                     continue  # this kind is already done
                 for next_shop in group:
-                    new = (visited | {kind}, next_shop)
+                    new_state = (visited | {kind}, next_shop)
                     new_dist = curr_dist + dist(shop, next_shop)
-                    if new_dist < best.get(new, float("inf")):
-                        best[new] = new_dist
-                        prev[new] = (visited, shop)
+                    if new_dist < best.get(new_state, float("inf")):
+                        best[new_state] = new_dist
+                        prev[new_state] = (visited, shop)
 
     # Last step: every kind visited, walk to the end, take the shortest
     total, last = float("inf"), None

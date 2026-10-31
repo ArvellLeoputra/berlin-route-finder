@@ -45,14 +45,14 @@ def make_heuristic(G, target):
     t_lat, t_lon = math.radians(t["y"]), math.radians(t["x"])
     t_cos = math.cos(t_lat)
 
-    def heuristic(node, _target):
+    def heuristic(node, _target=None):  # _target is unused, only there because NetworkX's A* passes it
         n = G.nodes[node]
         n_lat, n_lon = math.radians(G.nodes[node]["y"]), math.radians(G.nodes[node]["x"])
         # Haversine formula for the straight-line distance
         a = (math.sin((t_lat - n_lat) /2) ** 2
              + math.cos(n_lat) * t_cos * math.sin((t_lon - n_lon) / 2) ** 2)
         return 2 * EARTH_RADIUS * math.asin(math.sqrt(a))
-    
+
     return heuristic
 
 
