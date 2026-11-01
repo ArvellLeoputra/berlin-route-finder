@@ -4,9 +4,26 @@ All timings were measured on a MacBook Pro (M1 Pro, 16 GB RAM) with Python 3.13 
 
 ## Planner
 
-### More errands
+### Exact search vs shortlist
 
-`benchmarks/benchmark_planner.py`: TU Berlin → Alexanderplatz, 5 shops per kind, errands added in the order post office, pharmacy, groceries, bakery, ATM, drugstore.
+`benchmarks/benchmark_exact.py`: the same 40 random start/end pairs inside the covered area (at least 1.5 km apart), with 3 errands (post office, pharmacy, groceries) and with all 6. The shortlist uses 5 shops per kind.
+
+| Errands | Planner | Best trip found | Average extra | Worst miss | Time (mean / max) |
+|---|---|---|---|---|---|
+| 3 | Exact search | 40 of 40 | 0 % | 0 m | 0.25 s / 0.85 s |
+| 3 | Shortlist | 17 of 40 | 0.8 % | 542 m | 0.50 s / 2.01 s |
+| 6 | Exact search | 40 of 40 | 0 % | 0 m | 1.98 s / 7.88 s |
+| 6 | Shortlist | 10 of 40 | 1.5 % | 555 m | 1.79 s / 7.86 s |
+
+When the shortlist misses the best trip, its trip is 74 m (3 errands) or 101 m (6 errands) longer on average.
+
+The exact search never finds a longer trip than the shortlist, and the tests check this as well. With 3 errands it is also twice as fast, because it runs one guided search instead of a separate A* search for every pair of shortlisted places. Each extra errand doubles the work of the exact search, so with 6 errands the two take about the same time.
+
+For example, from TU Berlin to Alexanderplatz with a post office, a pharmacy and groceries, the exact search finds a 6.43 km trip and the shortlist a 6.67 km one.
+
+### Shortlist planner: more errands
+
+The first planner, kept for comparison. `benchmarks/benchmark_planner.py`: TU Berlin → Alexanderplatz, 5 shops per kind, errands added in the order post office, pharmacy, groceries, bakery, ATM, drugstore.
 
 ![Trips explode, planning time doesn't](../images/errands-scaling.png)
 
@@ -21,7 +38,7 @@ All timings were measured on a MacBook Pro (M1 Pro, 16 GB RAM) with Python 3.13 
 
 The number of possible trips explodes, but the planning time barely grows, because dynamic programming never builds them all. Most of the time goes into the walking routes between the shortlisted shops. Going straight home is about 6.2 km. Bakeries, ATMs and drugstores are so common that there's almost always one right on the way, so errands 4 to 6 add only about 10 m.
 
-### Shortlist size
+### Shortlist planner: shortlist size
 
 Same script, with a post office, a pharmacy and groceries.
 
@@ -46,7 +63,7 @@ The shortlist is a heuristic. A shop that looks like a detour in a straight line
 | Compression | Stored the graphs as `.graphml.gz` | 89 MB → 9.7 MB (walk), 40 MB → 4.7 MB (bike), small enough to ship with the repo |
 | Prebuilt index | Built the nearest-intersection lookup (a BallTree) once at startup | OSMnx prepared its lookup from scratch on each call, a fixed cost of about 0.2 s per search |
 | Single search | Took the route and its length from one bidirectional search instead of two | The length came from a second, one-directional Dijkstra search |
-| A* search | Replaced the bidirectional search with A*, guided by the straight-line distance to the destination | Checks fewer intersections, and since the guide never overestimates, so the routes stay the same |
+| A* search | Replaced the bidirectional search with A*, guided by the straight-line distance to the destination | Checks fewer intersections, and since the guide never overestimates, the routes stay the same |
 
 ### First version vs now
 
@@ -73,7 +90,7 @@ The shortlist is a heuristic. A shop that looks like a detour in a straight line
 | Hauptbahnhof → Alexanderplatz | 3.6 km | 0.031 s | 0.009 s | 3.5× |
 | Zoologischer Garten → East Side Gallery | 8.5 km | 0.148 s | 0.062 s | 2.4× |
 
-A* uses the straight-line distance to the destination as a guide, so it checks fewer intersections. The guide is never longer than the real distance, so A* finds the same shortest routes, and the tests check this. The app uses A*.
+A* uses the straight-line distance to the destination as a guide, so it checks fewer intersections. The guide is never longer than the real distance, so A* finds the same shortest routes, and the tests check this. The app uses it for plain routes, and the exact planner runs the same kind of A* search, but also keeps track of which errands are done.
 
 ### Search time vs route length
 
@@ -90,7 +107,8 @@ python -m benchmarks.benchmark           # startup and search times
 python -m benchmarks.benchmark_live      # the first version (needs internet)
 python -m benchmarks.benchmark_scaling   # the 200-route chart
 python -m benchmarks.benchmark_astar     # A* vs bidirectional search
-python -m benchmarks.benchmark_planner   # planner: more errands, shortlist sizes
+python -m benchmarks.benchmark_exact     # exact search vs shortlist, 40 random trips
+python -m benchmarks.benchmark_planner   # shortlist planner: more errands, shortlist sizes
 python -m benchmarks.plot_errands        # the errands chart
 ```
 
