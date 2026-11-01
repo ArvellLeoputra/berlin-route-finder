@@ -91,34 +91,26 @@ def make_map(G, route, distance, start_name, end_name, stops=None):
         node = G.nodes[node_id]
         coords.append((node["y"], node["x"]))
 
-    m = folium.Map(tiles="Esri.WorldStreetMap")
+    m = folium.Map(tiles=None, zoom_snap=0.25)
+    folium.TileLayer("OpenStreetMap.DE", name="Streets").add_to(m)
+    folium.TileLayer("Esri.WorldGrayCanvas", name="Light").add_to(m)
 
-    folium.PolyLine(
-        locations=coords,
-        color="blue",
-        weight=5
-    ).add_to(m)
+    folium.PolyLine(coords, color="white", weight=9, opacity=1).add_to(m)
+    folium.PolyLine(coords, color="#151a24", weight=5, opacity=1).add_to(m)
 
-    folium.Marker(
-        location=coords[0],
-        popup=start_name,
-        icon=folium.Icon(color="green"),
-        tooltip="Start",
-    ).add_to(m)
-
-    folium.Marker(
-        location=coords[-1],
-        popup=f"{end_name} – {distance:.0f} m",
-        icon=folium.Icon(color="red"),
-        tooltip="End",
-    ).add_to(m)
+    # Start and end: dark dots with a white ring
+    for point, name in [(coords[0], start_name), (coords[-1], end_name)]:
+        folium.CircleMarker(
+            location=point, radius=7, color="white", weight=3,
+            fill=True, fill_color="#151a24", fill_opacity=1, tooltip=name,
+        ).add_to(m)
 
     # Errand stops: numbered circles in visiting order
     for number, stop in enumerate(stops or [], start=1):
         color = STOP_COLORS.get(stop.kind, "gray")
         folium.Marker(
             location=(stop.lat, stop.lon),
-            tooltip=f"{number}. {stop.kind}: {stop.name or 'no name'}",
+            tooltip=f"{number}. {stop.kind}: {stop.name or 'Unnamed'}",
             icon=folium.DivIcon(
                 html=(f'<div style="background:{color};color:white;border:2px solid white;'
                       f'border-radius:50%;width:26px;height:26px;line-height:22px;'
@@ -129,5 +121,8 @@ def make_map(G, route, distance, start_name, end_name, stops=None):
             ),
         ).add_to(m)
 
-    m.fit_bounds(coords)
+    m.fit_bounds(coords, padding=(10, 10))
+
+    folium.LayerControl(collapsed=True).add_to(m)
+
     return m

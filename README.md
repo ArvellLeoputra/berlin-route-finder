@@ -6,7 +6,7 @@ Plans the shortest walk home through all your errands, on Berlin's real street n
 
 **Try it:** [berlin-route-finder.streamlit.app](https://berlin-route-finder.streamlit.app)
 
-<img src="images/app-errands.png" width="600" alt="The app planning a walk home with three errands">
+<img src="images/app-errands.png" alt="The app planning a walk home with three errands">
 
 *Zoologischer Garten → East Side Gallery with an ATM, groceries and a pharmacy on the way.*
 
