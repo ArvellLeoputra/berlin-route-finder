@@ -6,6 +6,7 @@ from src.config import CENTER, RADIUS
 from src.planner import load_shops
 from src.routing import STOP_COLORS, find_route, make_map, build_index
 from src.exact import plan_trip_exact
+from src.compact_graph import load_compact
 
 st.set_page_config(page_title="Berlin Route Finder", page_icon="🗺️", layout="wide")
 
@@ -33,7 +34,7 @@ def find_place(name, label):
 # Caching to avoid repeated graph loading
 @st.cache_resource(show_spinner=False)
 def load_saved_graph(mode):
-    return ox.load_graphml(f"data/{mode}.graphml.gz")
+    return load_compact(mode)
 
 
 # Built once at launch, so searches only look things up
