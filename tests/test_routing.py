@@ -1,7 +1,8 @@
 import osmnx as ox
 import pytest
 
-from src.routing import find_route, nearest_node
+from src.routing import find_route, nearest_node, build_index
+from src.compact_graph import load_compact
 
 
 # Test 1: the three benchmark routes give their known walking distances (in meters)
@@ -62,3 +63,13 @@ def test_unknown_algorithm(walk):
 
     with pytest.raises(ValueError):
         find_route(G, start, end, index=index, algorithm="other_algorithm")
+
+
+# Test 6: the compact graph the app uses gives the same routes as the full graph
+def test_compact_graph_matches_full(walk):
+    G, index = walk
+    C = load_compact("walk")
+    start, end = (52.5070, 13.3324), (52.5050, 13.4397)
+    _, full = find_route(G, start, end, index=index, algorithm="astar")
+    _, small = find_route(C, start, end, index=build_index(C), algorithm="astar")
+    assert small == pytest.approx(full)

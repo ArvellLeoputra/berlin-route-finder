@@ -1,12 +1,12 @@
-import streamlit as st
 import osmnx as ox
+import streamlit as st
 from streamlit_folium import st_folium
 
-from src.config import CENTER, RADIUS
-from src.planner import load_shops
-from src.routing import STOP_COLORS, find_route, make_map, build_index
-from src.exact import plan_trip_exact
 from src.compact_graph import load_compact
+from src.config import CENTER, RADIUS
+from src.exact import plan_trip_exact
+from src.planner import load_shops
+from src.routing import STOP_COLORS, build_index, find_route, make_map
 
 st.set_page_config(page_title="Berlin Route Finder", page_icon="🗺️", layout="wide")
 

@@ -54,7 +54,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-`pytest` runs 18 tests (routing distances, A* against Dijkstra, both planners against known best trips, the exact search never worse than the shortlist). They also run on every push with GitHub Actions.
+`pytest` runs 19 tests (routing distances, A* against Dijkstra, the compact graphs against the full ones, both planners against known best trips, the exact search never worse than the shortlist). They also run on every push with GitHub Actions.
 
 ## Project structure
 
@@ -67,11 +67,13 @@ src/
   config.py            covered area (center and radius)
   build_graph.py       downloads and saves the street graphs
   build_shops.py       downloads and saves the shops
+  compact_graph.py     smaller copy of the graphs for the app
 benchmarks/            timing scripts and the errands chart
 tests/                 pytest tests
-data/                  street graphs (.graphml.gz) and shops (shops.csv)
+data/                  street graphs (.graphml.gz, compact .pkl.gz) and shops (shops.csv)
 images/                screenshots, figures and charts
 docs/                  detailed benchmarks
+.streamlit/            app colour theme
 ```
 
 ## Limitations and next steps
