@@ -11,7 +11,7 @@ from sklearn.neighbors import BallTree
 def load_graph(start, end, mode="walk", buffer=500):
     midpoint = ((start[0] + end[0]) / 2, (start[1] + end[1]) / 2)
     straight = ox.distance.great_circle(start[0], start[1], end[0], end[1])
-    
+
     G = ox.graph_from_point(
         midpoint,
         dist=straight / 2 + buffer,
@@ -98,11 +98,14 @@ def make_map(G, route, distance, start_name, end_name, stops=None):
     folium.PolyLine(coords, color="white", weight=9, opacity=1).add_to(m)
     folium.PolyLine(coords, color="#151a24", weight=5, opacity=1).add_to(m)
 
-    # Start and end: dark dots with a white ring
-    for point, name in [(coords[0], start_name), (coords[-1], end_name)]:
+    markers = [
+        (coords[0], start_name, "white", "#151a24"),
+        (coords[-1], end_name, "#151a24", "white"),
+    ]
+    for point, name, fill, ring in markers:
         folium.CircleMarker(
-            location=point, radius=7, color="white", weight=3,
-            fill=True, fill_color="#151a24", fill_opacity=1, tooltip=name,
+            location=point, radius=7, color=ring, weight=3,
+            fill=True, fill_color=fill, fill_opacity=1, tooltip=name,
         ).add_to(m)
 
     # Errand stops: numbered circles in visiting order

@@ -71,10 +71,10 @@ def stop_row(color, label, name, number=""):
     )
 
 
+# Warm up the cache at launch, so the first search doesn't have to wait
 with st.spinner("Loading map data..."):
-    for mode_name in ("walk", "bike"):
-        load_saved_graph(mode_name)
-        load_index(mode_name)
+    graphs = {mode_name: load_saved_graph(mode_name) for mode_name in ("walk", "bike")}
+    indexes = {mode_name: load_index(mode_name) for mode_name in ("walk", "bike")}
 
 # Sidebar: all inputs
 modes = {"Walk": ("walk", 5), "Bike": ("bike", 15)}
@@ -82,13 +82,13 @@ modes = {"Walk": ("walk", 5), "Bike": ("bike", 15)}
 with st.sidebar:
     st.title("Berlin Route Finder")
     st.caption("Errands on the way home, central Berlin")
- 
+
     start_name = st.text_input("Start")
     end_name = st.text_input("Destination")
     mode_label = st.segmented_control("Mode", list(modes), default="Walk", required=True, width="stretch")
     errands = st.multiselect("Errands on the way (optional)", sorted(load_saved_shops()))
     clicked = st.button("Find route", type="primary", width="stretch")
- 
+
     st.caption("Covers 5 km around Brandenburger Tor. "
                "Street and shop data © OpenStreetMap contributors.")
 
@@ -98,18 +98,18 @@ if clicked:
     # start fresh, so a failed search doesn't bring back an old route
     for key in ["map", "distance", "direct", "speed", "query", "stops"]:
         st.session_state.pop(key, None)
- 
+
     if not start_name or not end_name:
         st.warning("Please enter both a start and a destination.")
         st.stop()
- 
+
     start = find_place(start_name, "start")
     end = find_place(end_name, "destination")
- 
-    with st.spinner("Loading streets..."):
-        G = load_saved_graph(mode)
-        index = load_index(mode)
- 
+
+    # Use the graph and index already loaded at launch
+    G = graphs[mode]
+    index = indexes[mode]
+
     direct_route, direct = find_route(G, start, end, index=index, algorithm="astar")
     if errands:
         with st.spinner("Planning your errands..."):
@@ -117,7 +117,7 @@ if clicked:
     else:
         stops = []
         distance, route = direct, direct_route
- 
+
     # Keep the result between reruns, otherwise the map flashes and disappears
     st.session_state["map"] = make_map(G, route, distance, start_name, end_name, stops=stops)
     st.session_state["distance"] = distance
@@ -156,7 +156,7 @@ with map_col:
     st_folium(st.session_state["map"], height=560, use_container_width=True, returned_objects=[])
 with list_col:
     st.subheader("Stops")
-    rows = [stop_row("#151a24", "Start", start)]
+    rows = [stop_row("white;border:3px solid #151a24;box-sizing:border-box", "Start", start)]
     rows += [stop_row(STOP_COLORS.get(stop.kind, "gray"), stop.kind, stop.name or "Unnamed", number)
              for number, stop in enumerate(stops, start=1)]
     rows.append(stop_row("#151a24", "End", end))
