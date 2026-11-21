@@ -1,10 +1,21 @@
 # Berlin Route Finder
 
-![Tests](https://github.com/ArvellLeoputra/berlin-route-finder/actions/workflows/tests.yml/badge.svg)
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.12-3776AB?logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/OSMnx-street%20network-7EBC6F?logo=openstreetmap&logoColor=white" alt="OSMnx">
+  <img src="https://img.shields.io/badge/NetworkX-routing-2C5BB4" alt="NetworkX">
+  <img src="https://img.shields.io/badge/scikit--learn-spatial%20index-F7931E?logo=scikitlearn&logoColor=white" alt="scikit-learn">
+  <img src="https://img.shields.io/badge/Streamlit-app-FF4B4B?logo=streamlit&logoColor=white" alt="Streamlit">
+  <img src="https://github.com/ArvellLeoputra/berlin-route-finder/actions/workflows/tests.yml/badge.svg" alt="Tests">
+</p>
+
+<p align="center">
+  <a href="https://berlin-route-finder.streamlit.app">
+    <img src="https://img.shields.io/badge/Live%20app-open-151a24?style=for-the-badge&logo=streamlit&logoColor=white" alt="Live app">
+  </a>
+</p>
 
 Plans the shortest walk home through all your errands, on Berlin's real street network. Pick a start, a destination and what you need (a pharmacy, groceries, an ATM...), and it chooses which shops to visit and in what order.
-
-**Try it:** [berlin-route-finder.streamlit.app](https://berlin-route-finder.streamlit.app)
 
 <img src="images/app-errands.png" alt="The app planning a walk home with three errands">
 
@@ -16,7 +27,7 @@ On my way home from uni, I usually have a few things to do, like dropping off a 
 
 ![Nearest next shop vs best combination](images/nearest-vs-best.png)
 
-With the same shops to choose from and the same start and end, always taking the nearest one gives 10.4 km, while the best combination is 8.7 km. The catch is that the number of possible trips explodes. With 6 errands, even with only 5 shops of each kind to choose from, there are over 11 million. In research, this is known as the [Trip Planning Query](https://doi.org/10.1007/11535331_16) (Li et al., 2005).
+With the same shops to choose from and the same start and end, always taking the nearest one gives 10.4 km, while the best combination is 8.7 km. The catch is that the number of possible trips explodes. With 6 errands, even with only 5 shops of each kind to choose from, there are over 11 million. In research, this is known as the [Trip Planning Query](https://users.cs.utah.edu/~lifeifei/tpq.html) (Li et al., 2005)
 
 ## How it works
 
