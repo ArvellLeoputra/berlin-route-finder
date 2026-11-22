@@ -1,5 +1,4 @@
 import csv
-import itertools
 from collections import namedtuple
 
 import networkx as nx
@@ -70,7 +69,7 @@ def plan_trip(G, index, start, end, shops, kinds, k=5):
 
     return best_stops, best_distance, route
 
- 
+
 def best_trip(start, end, candidates, dist):
     """
     Shortest trip from start to end visiting one shop of each kind (dynamic programming).
