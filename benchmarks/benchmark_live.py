@@ -1,17 +1,16 @@
+"""
+Time searches on the first version: streets downloaded live from the Overpass API for every route
+"""
 import time
 import osmnx as ox
+
 from src.routing import load_graph, find_route
+from benchmarks.routes import ROUTES
 
 # skip OSMnx saved downloads
 ox.settings.use_cache = False
 
-routes = {
-    "Brandenburger Tor → Potsdamer Platz": ((52.5163, 13.3777), (52.5096, 13.3760)),
-    "Hauptbahnhof → Alexanderplatz": ((52.5251, 13.3694), (52.5219, 13.4132)),
-    "Zoologischer Garten → East Side Gallery": ((52.5070, 13.3324), (52.5050, 13.4397)),
-}
-
-for name, (start, end) in routes.items():
+for name, (start, end) in ROUTES.items():
     t0 = time.perf_counter()
     G = load_graph(start, end)
     t1 = time.perf_counter()

@@ -1,3 +1,6 @@
+"""
+Time 200 random walking routes with and without the index, and plot time against distance
+"""
 import random
 
 import matplotlib.pyplot as plt
@@ -23,6 +26,7 @@ for i in range(200):
         t_new, _ = best_time(G, start, end, index=index, repeats=3)
     except nx.NetworkXNoPath:
         continue  # some pairs have no walkable connection
+
     old_t.append(t_old)
     new_t.append(t_new)
     dists.append(d / 1000)  # meters to km
@@ -33,7 +37,7 @@ for i in range(200):
 fig, ax = plt.subplots(figsize=(8, 4.5))
 ax.scatter(dists, old_t, alpha=0.5, s=15, label="without index")
 ax.scatter(dists, new_t, alpha=0.5, s=15, label="with index")
-ax.set_ylim(0, 0.5)
+ax.set_ylim(0, max(old_t * 1.1))
 ax.set_xlabel("Route length (km)")
 ax.set_ylabel("Search time (s)")
 ax.set_title("Search time vs. route length (preloaded walk graph)")

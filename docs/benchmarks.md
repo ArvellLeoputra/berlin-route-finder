@@ -29,12 +29,12 @@ The first planner, kept for comparison. `benchmarks/benchmark_planner.py`: TU Be
 
 | Errands | Possible trips | Best trip found | Time |
 |---|---|---|---|
-| 1 | 5 | 6.36 km | 0.06 s |
-| 2 | 50 | 6.36 km | 0.29 s |
-| 3 | 750 | 6.67 km | 0.58 s |
-| 4 | 15,000 | 6.68 km | 0.84 s |
-| 5 | 375,000 | 6.68 km | 1.55 s |
-| 6 | 11,250,000 | 6.68 km | 2.01 s |
+| 1 | 5 | 6.55 km | 0.06 s |
+| 2 | 50 | 6.55 km | 0.29 s |
+| 3 | 750 | 6.86 km | 0.58 s |
+| 4 | 15,000 | 6.86 km | 0.84 s |
+| 5 | 375,000 | 6.93 km | 1.55 s |
+| 6 | 11,250,000 | 6.93 km | 2.01 s |
 
 The number of possible trips explodes, but the planning time barely grows, because dynamic programming never builds them all. Most of the time goes into the walking routes between the shortlisted shops. Going straight home is about 6.2 km. Bakeries, ATMs and drugstores are so common that there's almost always one right on the way, so errands 4 to 6 add only about 10 m.
 
@@ -44,12 +44,12 @@ Same script, with a post office, a pharmacy and groceries.
 
 | Shortlist per kind | Possible trips | Best trip found | Time |
 |---|---|---|---|
-| 3 | 162 | 6.85 km | 0.20 s |
-| 5 | 750 | 6.67 km | 0.61 s |
-| 8 | 3,072 | 6.67 km | 1.57 s |
-| 10 | 6,000 | 6.64 km | 2.73 s |
+| 3 | 162 | 6.86 km | 0.20 s |
+| 5 | 750 | 6.86 km | 0.61 s |
+| 8 | 3,072 | 6.83 km | 1.57 s |
+| 10 | 6,000 | 6.83 km | 2.73 s |
 
-The shortlist is a heuristic. A shop that looks like a detour in a straight line can still have a direct street, so a small shortlist can miss the best trip. A bigger one is safer but slower. The app uses 5 shops per kind.
+The shortlist is a heuristic. A shop that looks like a detour in a straight line can still have a direct street, so a small shortlist can miss the best trip. A bigger one is safer but slower. The first version of the app uses 5 shops per kind. The app now uses the exact search, which considers every shop.
 
 ## Routing
 
@@ -86,7 +86,7 @@ The shortlist is a heuristic. A shop that looks like a detour in a straight line
 
 | Route | Distance | Bidirectional | A* | Speedup |
 |---|---|---|---|---|
-| Brandenburger Tor → Potsdamer Platz | 865 m | 0.002 s | 0.001 s | 2.7× |
+| Brandenburger Tor → Potsdamer Platz | 860 m | 0.002 s | 0.001 s | 2.7× |
 | Hauptbahnhof → Alexanderplatz | 3.6 km | 0.031 s | 0.009 s | 3.5× |
 | Zoologischer Garten → East Side Gallery | 8.5 km | 0.148 s | 0.062 s | 2.4× |
 
@@ -103,9 +103,9 @@ The same 200 random routes, each timed best of 3, with and without the prebuilt 
 ## Reproduce
 
 ```bash
-python -m benchmarks.benchmark           # startup and search times
 python -m benchmarks.benchmark_live      # the first version (needs internet)
-python -m benchmarks.benchmark_scaling   # the 200-route chart
+python -m benchmarks.benchmark_startup   # startup and search times
+python -m benchmarks.benchmark_scaling   # the 200-route chart (with and without the index)
 python -m benchmarks.benchmark_astar     # A* vs bidirectional search
 python -m benchmarks.benchmark_exact     # exact search vs shortlist, 40 random trips
 python -m benchmarks.benchmark_planner   # shortlist planner: more errands, shortlist sizes

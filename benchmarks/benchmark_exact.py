@@ -1,3 +1,6 @@
+"""
+Compare the exact search with the shortlist planner on 40 random trips: best trip found and time
+"""
 import random
 import statistics
 import time
@@ -9,6 +12,7 @@ from src.config import CENTER
 from src.exact import plan_trip_exact
 from src.planner import load_shops, plan_trip
 from src.routing import build_index
+from benchmarks.timing import timed_plan
 
 TRIPS = 40           # random start/end pairs per test
 MIN_DISTANCE = 1500  # skip pairs closer than this (m), they're too easy
@@ -30,19 +34,13 @@ while len(pairs) < TRIPS:
         pairs.append((start, end))
 
 
-def timed(planner, *args, **kwargs):
-    t0 = time.perf_counter()
-    _, distance, _ = planner(*args, **kwargs)
-    return distance, time.perf_counter() - t0
-
-
 for n in (3, 6):
     kinds = KINDS[:n]
     results = []
     for start, end in pairs:
         try:
-            exact, t_exact = timed(plan_trip_exact, G, index, start, end, shops, kinds)
-            short, t_short = timed(plan_trip, G, index, start, end, shops, kinds, k=5)
+            _, exact, t_exact = timed_plan(plan_trip_exact, G, index, start, end, shops, kinds)
+            _, short, t_short = timed_plan(plan_trip, G, index, start, end, shops, kinds, k=5)
         except nx.NetworkXNoPath:
             continue
         results.append((exact, short, t_exact, t_short))
