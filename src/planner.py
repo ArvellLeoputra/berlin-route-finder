@@ -1,4 +1,5 @@
 import csv
+import itertools
 from collections import namedtuple
 
 import networkx as nx
@@ -63,7 +64,7 @@ def plan_trip(G, index, start, end, shops, kinds, k=5):
     # Join the legs of the best trip into one route for the map
     trip = [start, *best_stops, end]
     route = []
-    for a, b in zip(trip, trip[1:]):
+    for a, b in itertools.pairwise(trip, trip[1:]):
         nodes = leg(a, b)[0]
         route += nodes if not route else nodes[1:]  # don't repeat the shared node
 

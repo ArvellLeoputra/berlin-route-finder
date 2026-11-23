@@ -1,12 +1,14 @@
 """
 Time the startup (loading graphs, building the index) and searches with and without the prebuilt index
 """
+
 import time
+
 import osmnx as ox
 
-from src.routing import build_index
 from benchmarks.routes import ROUTES
 from benchmarks.timing import best_time
+from src.routing import build_index
 
 graphs = {}
 print("Startup (once)")

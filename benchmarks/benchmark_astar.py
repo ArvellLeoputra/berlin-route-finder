@@ -5,9 +5,9 @@ import math
 
 import osmnx as ox
 
-from src.routing import build_index
 from benchmarks.routes import ROUTES
 from benchmarks.timing import best_time
+from src.routing import build_index
 
 G = ox.load_graphml("data/walk.graphml.gz")
 index = build_index(G)

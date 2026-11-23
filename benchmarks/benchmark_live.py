@@ -1,11 +1,13 @@
 """
 Time searches on the first version: streets downloaded live from the Overpass API for every route
 """
+
 import time
+
 import osmnx as ox
 
-from src.routing import load_graph, find_route
 from benchmarks.routes import ROUTES
+from src.routing import find_route, load_graph
 
 # skip OSMnx saved downloads
 ox.settings.use_cache = False

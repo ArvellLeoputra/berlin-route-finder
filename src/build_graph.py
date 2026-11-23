@@ -1,4 +1,5 @@
 import os
+
 import osmnx as ox
 
 from src.config import CENTER, RADIUS
@@ -13,6 +14,7 @@ def main():
         filename = f"data/{mode}.graphml.gz"
         ox.save_graphml(G, filename)
         print(f"Saved {filename} ({len(G.nodes)} nodes)")
+
 
 if __name__ == "__main__":
     main()

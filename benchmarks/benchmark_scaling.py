@@ -1,14 +1,15 @@
 """
 Time 200 random walking routes with and without the index, and plot time against distance
 """
+
 import random
 
 import matplotlib.pyplot as plt
 import networkx as nx
 import osmnx as ox
 
-from src.routing import build_index
 from benchmarks.timing import best_time
+from src.routing import build_index
 
 G = ox.load_graphml("data/walk.graphml.gz")
 nodes = list(G.nodes)

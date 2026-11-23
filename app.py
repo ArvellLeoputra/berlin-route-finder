@@ -1,5 +1,7 @@
 import osmnx as ox
+import requests
 import streamlit as st
+from osmnx._errors import InsufficientResponseError
 from streamlit_folium import st_folium
 
 from src.compact_graph import load_compact
@@ -19,9 +21,11 @@ def cached_geodata(place):
 def find_place(name, label):
     try:
         point = cached_geodata(name)
-    except Exception:
+    except (InsufficientResponseError, ValueError):
         st.error(f"Couldn't find the {label} '{name}'. Try another name.")
-        st.stop()
+    except requests.RequestException:
+        st.error("Couldn't reach the map service. Check your connection and try again.")
+    st.stop()
 
     dist = ox.distance.great_circle(CENTER[0], CENTER[1], point[0], point[1])
     if dist > RADIUS:

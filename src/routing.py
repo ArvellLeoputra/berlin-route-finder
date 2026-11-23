@@ -1,10 +1,9 @@
 import math
-import folium
 
-import osmnx as ox
+import folium
 import networkx as nx
 import numpy as np
-
+import osmnx as ox
 from sklearn.neighbors import BallTree
 
 
@@ -12,11 +11,7 @@ def load_graph(start, end, mode="walk", buffer=500):
     midpoint = ((start[0] + end[0]) / 2, (start[1] + end[1]) / 2)
     straight = ox.distance.great_circle(start[0], start[1], end[0], end[1])
 
-    G = ox.graph_from_point(
-        midpoint,
-        dist=straight / 2 + buffer,
-        network_type=mode
-    )
+    G = ox.graph_from_point(midpoint, dist=straight / 2 + buffer, network_type=mode)
     return G
 
 
@@ -38,6 +33,7 @@ def nearest_node(index, point):
 
 EARTH_RADIUS = 6371000
 
+
 def make_heuristic(G, target):
     # A* guide function: straight-line distance from any node to the target
     # A* never skips the best path, since its straight-line distance is never longer than the actual path distance
@@ -45,11 +41,18 @@ def make_heuristic(G, target):
     t_lat, t_lon = math.radians(t["y"]), math.radians(t["x"])
     t_cos = math.cos(t_lat)
 
-    def heuristic(node, _target=None):  # _target is unused, only there because NetworkX's A* passes it
-        n_lat, n_lon = math.radians(G.nodes[node]["y"]), math.radians(G.nodes[node]["x"])
+    def heuristic(
+        node, _target=None
+    ):  # _target is unused, only there because NetworkX's A* passes it
+        n_lat, n_lon = (
+            math.radians(G.nodes[node]["y"]),
+            math.radians(G.nodes[node]["x"]),
+        )
         # Haversine formula for the straight-line distance
-        a = (math.sin((t_lat - n_lat) /2) ** 2
-             + math.cos(n_lat) * t_cos * math.sin((t_lon - n_lon) / 2) ** 2)
+        a = (
+            math.sin((t_lat - n_lat) / 2) ** 2
+            + math.cos(n_lat) * t_cos * math.sin((t_lon - n_lon) / 2) ** 2
+        )
         return 2 * EARTH_RADIUS * math.asin(math.sqrt(a))
 
     return heuristic
@@ -64,15 +67,20 @@ def find_route(G, start, end, index=None, algorithm="bidirectional"):
         end_node = nearest_node(index, end)
 
     if algorithm == "bidirectional":
-        distance, route = nx.bidirectional_dijkstra(G, start_node, end_node, weight="length")
+        distance, route = nx.bidirectional_dijkstra(
+            G, start_node, end_node, weight="length"
+        )
     elif algorithm == "astar":
         heuristic = make_heuristic(G, end_node)
-        route = nx.astar_path(G, start_node, end_node, heuristic=heuristic, weight="length")
+        route = nx.astar_path(
+            G, start_node, end_node, heuristic=heuristic, weight="length"
+        )
         distance = nx.path_weight(G, route, weight="length")
     else:
         raise ValueError(f"Unknown algorithm: {algorithm}")
 
     return route, distance
+
 
 STOP_COLORS = {
     "Post office": "#2f6feb",
@@ -103,8 +111,14 @@ def make_map(G, route, distance, start_name, end_name, stops=None):
     ]
     for point, name, fill, ring in markers:
         folium.CircleMarker(
-            location=point, radius=7, color=ring, weight=3,
-            fill=True, fill_color=fill, fill_opacity=1, tooltip=name,
+            location=point,
+            radius=7,
+            color=ring,
+            weight=3,
+            fill=True,
+            fill_color=fill,
+            fill_opacity=1,
+            tooltip=name,
         ).add_to(m)
 
     # Errand stops: numbered circles in visiting order
@@ -114,10 +128,12 @@ def make_map(G, route, distance, start_name, end_name, stops=None):
             location=(stop.lat, stop.lon),
             tooltip=f"{number}. {stop.kind}: {stop.name or 'Unnamed'}",
             icon=folium.DivIcon(
-                html=(f'<div style="background:{color};color:white;border:2px solid white;'
-                      f'border-radius:50%;width:26px;height:26px;line-height:22px;'
-                      f'text-align:center;font-weight:bold;font-family:sans-serif;'
-                      f'box-shadow:0 1px 3px rgba(0,0,0,0.4)">{number}</div>'),
+                html=(
+                    f'<div style="background:{color};color:white;border:2px solid white;'
+                    f"border-radius:50%;width:26px;height:26px;line-height:22px;"
+                    f"text-align:center;font-weight:bold;font-family:sans-serif;"
+                    f'box-shadow:0 1px 3px rgba(0,0,0,0.4)">{number}</div>'
+                ),
                 icon_size=(26, 26),
                 icon_anchor=(13, 13),
             ),

@@ -1,8 +1,8 @@
 import osmnx as ox
 import pytest
 
-from src.routing import find_route, nearest_node, build_index
 from src.compact_graph import load_compact
+from src.routing import build_index, find_route, nearest_node
 
 
 # Test 1: the three benchmark routes give their known walking distances (in meters)

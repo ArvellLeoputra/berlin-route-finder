@@ -3,16 +3,15 @@ Compare the exact search with the shortlist planner on 40 random trips: best tri
 """
 import random
 import statistics
-import time
 
 import networkx as nx
 import osmnx as ox
 
+from benchmarks.timing import timed_plan
 from src.config import CENTER
 from src.exact import plan_trip_exact
 from src.planner import load_shops, plan_trip
 from src.routing import build_index
-from benchmarks.timing import timed_plan
 
 TRIPS = 40           # random start/end pairs per test
 MIN_DISTANCE = 1500  # skip pairs closer than this (m), they're too easy

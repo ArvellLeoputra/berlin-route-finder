@@ -1,9 +1,10 @@
-import networkx as nx
-import pytest
 import itertools
 import random
 
-from src.planner import Shop, load_shops, plan_trip, best_trip
+import networkx as nx
+import pytest
+
+from src.planner import Shop, best_trip, load_shops, plan_trip
 from src.routing import find_route
 
 UNI = (52.5125, 13.3269)    # TU Berlin
